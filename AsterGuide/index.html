@@ -73,7 +73,7 @@
       update(root);
     });
 
-    d3.select(self.frameElement).style("height", "800px");
+    d3.select(self.frameElement).style("height", "900px");
 
     function update(source) {
 
@@ -92,7 +92,7 @@
 
       nodeEnter.append("circle")
           .attr("r", 1e-6)
-          .style("fill", function(d) { return d._children ? "infusiveorange" : "#FF4738"; });
+          .style("fill", function(d) { return d._children ? "orange" : "#FF4738"; });
 
       nodeEnter.append("text")
           .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
@@ -100,8 +100,6 @@
           .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
           .text(function(d) { return d.name; })
           .style("fill-opacity", 1e-6);
-          
-      nodeEnter.on("click", show_text);
 
       var nodeUpdate = node.transition()
           .duration(duration)
@@ -109,7 +107,7 @@
 
       nodeUpdate.select("circle")
           .attr("r", 6.0)
-          .style("fill", function(d) { return d._children ? "infusiveorange" : "#FF4738"; });
+          .style("fill", function(d) { return d._children ? "orange" : "#FF4738"; });
 
       nodeUpdate.select("text")
           .style("fill-opacity", 1);
