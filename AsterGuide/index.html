@@ -32,7 +32,7 @@
 
 <div class="row">
     <div class="col-md-7" id="chart"></div>
-    <div class="col-md-5"><script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script></div>
+    <div class="col-md-5" id="function_text" style="display:none"><script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script></div>
 </div>
 
 <script>
@@ -99,7 +99,8 @@
           .attr("dy", ".35em")
           .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
           .text(function(d) { return d.name; })
-          .style("fill-opacity", 1e-6);
+          .style("fill-opacity", 1e-6)
+          .on("click", show_text);
 
       var nodeUpdate = node.transition()
           .duration(duration)
@@ -160,6 +161,11 @@
         d._children = null;
       }
       update(d);
+    }
+
+    function show_text(d){
+        var ele = document.getElementById('function_text');
+        ele.style.display == "block";
     }
 
 </script>
