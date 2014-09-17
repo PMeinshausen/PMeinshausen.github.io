@@ -5,20 +5,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
+    var myProject = {};
     $(document).ready(function(){
-        data;
         $.getJSON('aster_functions.json', function(response){
-            data = response;
+            myProject.mydata = response;
         });
 
-        names = [];
-        for (i=0; i < data['children'].length; i++){
-            for (j=0; j < data['children'][i]['children'].length; j++){
-                names.push(data['children'][i]['children'][j].name);
+        myProject.names = [];
+        for (i=0; i < myProject.mydata['children'].length; i++){
+            for (j=0; j < myProject.mydata['children'][i]['children'].length; j++){
+                myProject.names.push(myProject.mydata['children'][i]['children'][j].name);
             }
         };
     });
-    console.log(names);
+    console.log(myProject.names);
    
 </script>
 
