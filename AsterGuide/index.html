@@ -11,15 +11,6 @@
             myProject.mydata = response;
         });
     });
-    console.log(myProject.mydata);
-
-    myProject.names = [];
-    for (i=0; i < myProject.mydata['children'].length; i++){
-        for (j=0; j < myProject.mydata['children'][i]['children'].length; j++){
-            myProject.names.push(myProject.mydata['children'][i]['children'][j].name);
-        }
-    };
-    console.log(myProject.names);
    
 </script>
 
@@ -62,6 +53,16 @@
 </div>
 
 <script>    
+
+    console.log(myProject.mydata);
+
+    myProject.names = [];
+    for (i=0; i < myProject.mydata['children'].length; i++){
+        for (j=0; j < myProject.mydata['children'][i]['children'].length; j++){
+            myProject.names.push(myProject.mydata['children'][i]['children'][j].name);
+        }
+    };
+    console.log(myProject.names);
 
     var margin = {top: 20, right: 120, bottom: 20, left: 120},
         width = 1280 - margin.right - margin.left,
