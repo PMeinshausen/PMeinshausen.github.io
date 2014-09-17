@@ -47,6 +47,7 @@
     $.getJSON('aster_functions.json', function(response){
         data = response;
     });
+    console.log(data);
 
     var names = [];
     for (i=0; i < data['children'].length; i++){
