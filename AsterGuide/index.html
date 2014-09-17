@@ -11,6 +11,8 @@
             myProject.mydata = response;
         });
     });
+    console.log(myProject.mydata);
+
     myProject.names = [];
     for (i=0; i < myProject.mydata['children'].length; i++){
         for (j=0; j < myProject.mydata['children'][i]['children'].length; j++){
