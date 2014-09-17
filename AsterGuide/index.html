@@ -5,13 +5,21 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
-    var data;
-    $.getJSON('aster_functions.json', function(response){
-        data = response;
-    });
-    $(document).ajaxStop(function (){
+    $(document).ready(function(){
+        var data;
+        $.getJSON('aster_functions.json', function(response){
+            data = response;
+        });
 
-    });
+        var names = [];
+        for (i=0; i < flare['children'].length; i++){
+            for (j=0; j < flare['children'][i]['children'].length; j++){
+                names.push(flare['children'][i]['children'][j].name);
+            }
+        };
+    })
+    console.log(names);
+   
 </script>
 
 
@@ -86,14 +94,6 @@
           d.children = null;
         }
       }
-
-      var names = [];
-      for (i=0; i < flare['children'].length; i++){
-        for (j=0; j < flare['children'][i]['children'].length; j++){
-            names.push(flare['children'][i]['children'][j].name);
-        }
-      };
-      console.log(names);
 
       root.children.forEach(collapse);
       update(root);
@@ -197,12 +197,12 @@
         ele.style.display = "block";
     }
 
-    function update_info(d, names){
-        /*
+    function update_info(d){
+        
         for (i=0; i<names.length; i++){
             $("div[id =" + names[i] + "]").hide();
         }
-        */
+        
 
         $("div[id ="+d.name+"]").show();
 
