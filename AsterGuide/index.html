@@ -4,6 +4,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<script>
+    var data;
+    $.getJSON('aster_functions.json', function(response){
+        data = response;
+    });
+    $(document).ajaxStop(function (){
+
+    });
+</script>
 
 
 <style>
@@ -43,13 +52,7 @@
     </div>
 </div>
 
-<script>
-    console.log(data);
-
-    var data;
-    $.getJSON('aster_functions.json', function(response){
-        data = response;
-    
+<script>    
 
     var margin = {top: 20, right: 120, bottom: 20, left: 120},
         width = 1280 - margin.right - margin.left,
@@ -199,8 +202,7 @@
         $("div[id ="+d.name+"]").show();
 
     }
-    
-});
+
 </script>
 
 
