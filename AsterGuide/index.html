@@ -95,7 +95,7 @@
 
     d3.select(self.frameElement).style("height", "900px");
 
-    function update(source) {
+    function update(source, names) {
 
       var nodes = tree.nodes(root).reverse(),
           links = tree.links(nodes);
@@ -173,7 +173,7 @@
       });
     }
 
-    function click(d) {
+    function click(d, names) {
       if (d.children) {
         d._children = d.children;
         d.children = null;
@@ -181,7 +181,7 @@
         d.children = d._children;
         d._children = null;
       }
-      update(d);
+      update(d, names);
     }
 
     function show_text(d){
