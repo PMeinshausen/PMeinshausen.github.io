@@ -12,13 +12,14 @@
 
         console.log(mydata);
     });
-
+    /*
     names = [];
     for (i=0; i < mydata['children'].length; i++){
         for (j=0; j < mydata['children'][i]['children'].length; j++){
             names.push(mydata['children'][i]['children'][j].name);
         }
     };
+    */
    
 </script>
 
@@ -198,6 +199,12 @@
     }
 
     function update_info(d){
+        names = [];
+        for (i=0; i < mydata['children'].length; i++){
+            for (j=0; j < mydata['children'][i]['children'].length; j++){
+                names.push(mydata['children'][i]['children'][j].name);
+            }
+        };
         
         for (i=0; i<names.length; i++){
             $("div[id = "+names[i]+"]").hide();
