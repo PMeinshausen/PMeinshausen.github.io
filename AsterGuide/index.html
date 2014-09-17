@@ -10,14 +10,13 @@
         $.getJSON('aster_functions.json', function(response){
             myProject.mydata = response;
         });
-
-        myProject.names = [];
-        for (i=0; i < myProject.mydata['children'].length; i++){
-            for (j=0; j < myProject.mydata['children'][i]['children'].length; j++){
-                myProject.names.push(myProject.mydata['children'][i]['children'][j].name);
-            }
-        };
     });
+    myProject.names = [];
+    for (i=0; i < myProject.mydata['children'].length; i++){
+        for (j=0; j < myProject.mydata['children'][i]['children'].length; j++){
+            myProject.names.push(myProject.mydata['children'][i]['children'][j].name);
+        }
+    };
     console.log(myProject.names);
    
 </script>
