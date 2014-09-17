@@ -31,7 +31,7 @@
       cursor: pointer;
     }
     .node circle {
-      fill: #FF6E00;
+      fill: #fff;
       stroke: #FF6E00;
       stroke-width: 1.5px;
     }
@@ -139,7 +139,7 @@
 
       var nodeUpdate = node.transition()
           .duration(duration)
-          .attr("transform", function(d) { return "translate(" + d.y +  + "," + d.x + ")"; });
+          .attr("transform", function(d) { return "translate(" + (d.y + 5) + "," + d.x + ")"; });
 
       nodeUpdate.select("circle")
           .attr("r", 6.0)
