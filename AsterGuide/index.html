@@ -90,7 +90,7 @@
       var data = nodes;
       console.log(data[0]['_children'].length);
       var names = [];
-      for (i=0; i < data.length; i++){
+      for (i=0; i < data.length - 1; i++){
         console.log(data[i]['_children'].length);
         for (j=0; j < data[i]['_children'].length; j++){
             names.push(data[i]['_children'][j]);
