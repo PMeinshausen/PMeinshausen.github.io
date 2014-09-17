@@ -68,8 +68,6 @@
       root.x0 = height / 2;
       root.y0 = 0;
 
-      console.log(flare);
-
       
       var data = flare;
       var names = [];
@@ -90,7 +88,7 @@
       }
 
       root.children.forEach(collapse);
-      update(root);
+      update(root, names);
     });
 
     d3.select(self.frameElement).style("height", "900px");
