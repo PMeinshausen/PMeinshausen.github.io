@@ -5,14 +5,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
-    var myProject = {};
-    myProject.mydata;
-    var myvar;
     $(document).ready(function(){
         $.getJSON('aster_functions.json', function(response){
-            myProject.mydata = response;
+            mydata = response;
         });
-        myvar = "this";
+
+        console.log(mydata);
+
+        names = [];
+        for (i=0; i < mydata['children'].length; i++){
+            for (j=0; j < mydata['children'][i]['children'].length; j++){
+                names.push(mydata['children'][i]['children'][j].name);
+            }
+        };
+        console.log(myProject.names);
     });
    
 </script>
@@ -56,16 +62,6 @@
 </div>
 
 <script>    
-
-    console.log(myvar);
-
-    myProject.names = [];
-    for (i=0; i < myProject.mydata['children'].length; i++){
-        for (j=0; j < myProject.mydata['children'][i]['children'].length; j++){
-            myProject.names.push(myProject.mydata['children'][i]['children'][j].name);
-        }
-    };
-    console.log(myProject.names);
 
     var margin = {top: 20, right: 120, bottom: 20, left: 120},
         width = 1280 - margin.right - margin.left,
