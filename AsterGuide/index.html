@@ -96,6 +96,7 @@
     d3.select(self.frameElement).style("height", "900px");
 
     function update(source, names) {
+      console.log(names);
 
       var nodes = tree.nodes(root).reverse(),
           links = tree.links(nodes);
