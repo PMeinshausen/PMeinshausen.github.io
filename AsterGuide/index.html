@@ -88,7 +88,13 @@
           links = tree.links(nodes);
 
       var data = nodes;
-      console.log(data);
+      var names = [];
+      for (i=0; i < data.length; i++){
+        for (j=0; j < data[i]._children.length; j++){
+            names.push(data[i]._children[j]);
+        }
+      };
+      console.log(names);
 
       nodes.forEach(function(d) { d.y = d.depth * 180; });
 
