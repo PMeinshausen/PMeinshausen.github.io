@@ -96,14 +96,13 @@
       console.log(names);
 
       root.children.forEach(collapse);
-      update(root, names);
+      update(root);
     });
 
     d3.select(self.frameElement).style("height", "900px");
 
-    function update(source, names) {
+    function update(source) {
       console.log(source);
-      console.log(names);
 
       var nodes = tree.nodes(root).reverse(),
           links = tree.links(nodes);
@@ -116,7 +115,7 @@
       var nodeEnter = node.enter().append("g")
           .attr("class", "node")
           .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-          .on("click", click(names));
+          .on("click", click);
 
       nodeEnter.append("circle")
           .attr("r", 1e-6)
@@ -182,7 +181,7 @@
     }
 
 
-    function click(d, names) {
+    function click(d) {
       if (d.children) {
         d._children = d.children;
         d.children = null;
@@ -190,7 +189,7 @@
         d.children = d._children;
         d._children = null;
       }
-      update(d, names);
+      update(d);
     }
 
     function show_text(d){
