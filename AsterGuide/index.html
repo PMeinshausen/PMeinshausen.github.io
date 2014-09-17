@@ -6,12 +6,12 @@
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
     $(document).ready(function(){
-        var data;
+        data;
         $.getJSON('aster_functions.json', function(response){
             data = response;
         });
 
-        var names = [];
+        names = [];
         for (i=0; i < data['children'].length; i++){
             for (j=0; j < data['children'][i]['children'].length; j++){
                 names.push(data['children'][i]['children'][j].name);
