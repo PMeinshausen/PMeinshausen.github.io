@@ -93,7 +93,7 @@
       for (i=0; i < data.length - 1; i++){
         console.log(data[i]['_children'].length);
         for (j=0; j < data[i]['_children'].length; j++){
-            names.push(data[i]['_children'][j]);
+            names.push(data[i]['_children'][j].name);
         }
       };
       console.log(names);
