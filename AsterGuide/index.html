@@ -91,9 +91,9 @@
       console.log(data[0]['_children'].length);
       var names = [];
       for (i=0; i < data.length; i++){
-        console.log(data[i]);
+        console.log(data[i]['_children']);
         for (j=0; j < 10; j++){
-            names.push(data[i]['_children'].length);
+            names.push(data[i]['_children']);
         }
       };
       console.log(names);
