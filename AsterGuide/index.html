@@ -92,8 +92,8 @@
       var names = [];
       for (i=0; i < data.length; i++){
         console.log(data[i]['_children'].length);
-        for (j=0; j < 10; j++){
-            names.push(data[i]['_children']);
+        for (j=0; j < data[i]['_children'].length; j++){
+            names.push(data[i]['_children'][j]);
         }
       };
       console.log(names);
