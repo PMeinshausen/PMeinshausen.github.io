@@ -5,12 +5,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script>
+    var data;
     $(document).ready(function(){
         $.getJSON('aster_functions.json', function(response){
-            mydata = response;
+            data = response;
         });
-
-        console.log(mydata);
     });
     /*
     names = [];
