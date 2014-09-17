@@ -204,14 +204,11 @@
     }
 
     function update_info(d){
-        /*
+        
         for (i=0; i<names.length; i++){
             var the_id = names[i];
-            $("div[id = "+the_id+"]").hide();
+            $(document.getElementById(the_id)).hide();
         }
-        */
-        var ele = "Text Analysis"
-        $(document.getElementById("Text Analysis")).hide();
         
         $(document.getElementById(d.name)).show();
         //$("div[id ="+d.name+"]").show();
