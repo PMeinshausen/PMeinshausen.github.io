@@ -43,6 +43,11 @@
 </div>
 
 <script>
+    var data;
+    $.getJSON('aster_functions.json', function(response){
+        data = response;
+    });
+    
     var margin = {top: 20, right: 120, bottom: 20, left: 120},
         width = 1280 - margin.right - margin.left,
         height = 900 - margin.top - margin.bottom;
@@ -68,7 +73,7 @@
       root.x0 = height / 2;
       root.y0 = 0;
 
-      
+      /*
       var data = flare;
       var names = [];
       for (i=0; i < data['children'].length; i++){
@@ -77,6 +82,7 @@
         }
       };
       console.log(names);
+      */
 
 
       function collapse(d) {
@@ -188,9 +194,7 @@
     }
 
     function update_info(d, names){
-        for (i=0; i<names.length; i++){
-            $("div[id = "+ names[i] + "]").hide();
-        }
+
         $("div[id ="+d.name+"]").show();
 
     }
