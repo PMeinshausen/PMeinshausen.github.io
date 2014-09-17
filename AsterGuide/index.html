@@ -4,12 +4,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
-<script> 
-    var data;
-    $.getJSON('aster_functions.json', function(response){
-        data = response;
-    });
-</script>
+
 
 <style>
     body {
@@ -51,6 +46,10 @@
 <script>
     console.log(data);
 
+    var data;
+    $.getJSON('aster_functions.json', function(response){
+        data = response;
+    
     var names = [];
     for (i=0; i < data['children'].length; i++){
         for (j=0; j < data['children'][i]['children'].length; j++){
@@ -200,7 +199,7 @@
 
     }
     
-
+});
 </script>
 
 
