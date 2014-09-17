@@ -87,6 +87,13 @@
       root.x0 = height / 2;
       root.y0 = 0;
 
+      names = [];
+      for (i=0; i < root['children'].length; i++){
+          for (j=0; j < root['children'][i]['children'].length; j++){
+              names.push(root['children'][i]['children'][j].name);
+          }
+      };
+
       function collapse(d) {
         if (d.children) {
           d._children = d.children;
@@ -102,7 +109,6 @@
     d3.select(self.frameElement).style("height", "900px");
 
     function update(source) {
-      console.log(source);
 
       var nodes = tree.nodes(root).reverse(),
           links = tree.links(nodes);
@@ -198,12 +204,6 @@
     }
 
     function update_info(d){
-        names = [];
-        for (i=0; i < data['children'].length; i++){
-            for (j=0; j < data['children'][i]['children'].length; j++){
-                names.push(data['children'][i]['children'][j].name);
-            }
-        };
         
         for (i=0; i<names.length; i++){
             $("div[id = "+names[i]+"]").hide();
