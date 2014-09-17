@@ -70,15 +70,16 @@
 
       console.log(flare);
 
-      /*
-      var data = nodes;
+      
+      var data = flare;
       var names = [];
-      for (i=0; i < data.length - 1; i++){
-        for (j=0; j < data[i]['_children'].length; j++){
-            names.push(data[i]['_children'][j].name);
+      for (i=0; i < data['children'].length; i++){
+        for (j=0; j < data['children'][i]['_children'].length; j++){
+            names.push(data['children'][i]['_children'][j].name);
         }
       };
-      */
+      console.log(names);
+
 
       function collapse(d) {
         if (d.children) {
