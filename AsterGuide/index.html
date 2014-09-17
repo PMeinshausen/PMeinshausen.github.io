@@ -11,15 +11,14 @@
         });
 
         console.log(mydata);
-
-        names = [];
-        for (i=0; i < mydata['children'].length; i++){
-            for (j=0; j < mydata['children'][i]['children'].length; j++){
-                names.push(mydata['children'][i]['children'][j].name);
-            }
-        };
-        console.log(myProject.names);
     });
+
+    names = [];
+    for (i=0; i < mydata['children'].length; i++){
+        for (j=0; j < mydata['children'][i]['children'].length; j++){
+            names.push(mydata['children'][i]['children'][j].name);
+        }
+    };
    
 </script>
 
