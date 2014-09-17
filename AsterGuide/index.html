@@ -88,13 +88,12 @@
       }
 
       root.children.forEach(collapse);
-      update(root, names);
+      update(root);
     });
 
     d3.select(self.frameElement).style("height", "900px");
 
-    function update(source, names) {
-      console.log(names);
+    function update(source) {
 
       var nodes = tree.nodes(root).reverse(),
           links = tree.links(nodes);
@@ -120,7 +119,7 @@
           .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
           .text(function(d) { return d.name; })
           .style("fill-opacity", 1e-6)
-          .on('click', function(d){ update_info(d, names); });
+          .on('click', function(d){ update_info(d); });
 
       var nodeUpdate = node.transition()
           .duration(duration)
@@ -172,7 +171,7 @@
       });
     }
 
-    function click(d, names) {
+    function click(d) {
       if (d.children) {
         d._children = d.children;
         d.children = null;
@@ -180,7 +179,7 @@
         d.children = d._children;
         d._children = null;
       }
-      update(d, names);
+      update(d);
     }
 
     function show_text(d){
