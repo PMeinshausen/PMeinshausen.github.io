@@ -68,6 +68,14 @@
       root.x0 = height / 2;
       root.y0 = 0;
 
+      var data = nodes;
+      var names = [];
+      for (i=0; i < data.length - 1; i++){
+        for (j=0; j < data[i]['_children'].length; j++){
+            names.push(data[i]['_children'][j].name);
+        }
+      };
+
       function collapse(d) {
         if (d.children) {
           d._children = d.children;
@@ -86,14 +94,6 @@
 
       var nodes = tree.nodes(root).reverse(),
           links = tree.links(nodes);
-
-      var data = nodes;
-      var names = [];
-      for (i=0; i < data.length - 1; i++){
-        for (j=0; j < data[i]['_children'].length; j++){
-            names.push(data[i]['_children'][j].name);
-        }
-      };
 
       nodes.forEach(function(d) { d.y = d.depth * 180; });
 
