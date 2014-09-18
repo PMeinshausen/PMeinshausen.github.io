@@ -525,6 +525,13 @@
 
 
     function click(d) {
+        for (i=0; i<names.length; i++){
+            var the_id = names[i];
+            $(document.getElementById(the_id)).hide();
+        }
+        
+        $(document.getElementById(d.name)).show();
+        
       if (d.children) {
         d._children = d.children;
         d.children = null;
@@ -542,7 +549,6 @@
     }
 
     function update_info(d){
-        console.log(names);
         for (i=0; i<names.length; i++){
             var the_id = names[i];
             $(document.getElementById(the_id)).hide();
