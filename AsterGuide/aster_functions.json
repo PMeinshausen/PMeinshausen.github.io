@@ -5,18 +5,18 @@
             "name": "Time Series, Path and Attribution Analysis",
             "children": [
                 {"name": "Attribution" },
-                {"name": "Cumulative Moving Average" },
-                {"name": "Dynamic time warping" },
-                {"name": "Discrete Wavelet Transform" },
-                {"name": "Discrete Wavelet Transform 2" },
+                {"name": "CMAVG" },
+                {"name": "DTW" },
+                {"name": "DWT" },
+                {"name": "DWT2D" },
                 {"name": "FrequentPaths" },
-                {"name": "Inverse Discrete Wavelet Transform" },
-                {"name": "Inverse Discrete Wavelet Transform 2" },
+                {"name": "IDWT" },
+                {"name": "IDWT2D" },
                 {"name": "Path_Analyzer" },
                 {"name": "Path_Generator" },
                 {"name": "Path_Start" },
                 {"name": "Path_Summarizer" },
-                {"name": "Symbolic Aggregate Approximation" },
+                {"name": "SAX" },
                 {"name": "Sessionization" }
             ]
         },
@@ -34,36 +34,36 @@
                 {"name": "ConfusionMatrix" },
                 {"name": "Correlation" },
                 {"name": "Distribution Matching" },
-                {"name": "Exponential moving average" },
-                {"name": "Enhanced Histogram" },
+                {"name": "EMAVG" },
+                {"name": "Enhanced Histogram Function" },
                 {"name": "FMeasure" },
-                {"name": "Generalized linear model" },
+                {"name": "GLM" },
                 {"name": "GLMPredict" },
                 {"name": "Histogram" },
-                {"name": "K-Nearest Neighbor" },
-                {"name": "Least Angle Regression" },
-                {"name": "Linear regression" },
+                {"name": "KNN" },
+                {"name": "LARS Functions" },
+                {"name": "LinReg" },
                 {"name": "Percentile" },
                 {"name": "Principal Component Analysis" },
                 {"name": "Sample" },
-                {"name": "Simple Moving Average" },
+                {"name": "SMAVG" },
                 {"name": "Support Vector Machines" },
-                {"name": "Volume-Weighted Average Price" },
-                {"name": "Weighted moving average" }
+                {"name": "VWAP" },
+                {"name": "WMAVG" }
             ]
         },
         {
             "name": "Text Analysis",
             "children": [
-                {"name": "Latent Dirichlet Allocation Functions" },
+                {"name": "LDA Functions" },
                 {"name": "Levenshtein Distance" },
                 {"name": "Naive Bayes Text Classifier" },
                 {"name": "Named Entity Recognition" },
                 {"name": "nGram" },
-                {"name": "Part-of-speech Tagger" },
+                {"name": "PoSTagger" },
                 {"name": "Sentenizer" },
                 {"name": "Sentiment Extraction Functions" },
-                {"name": "Term Frequency - Inverse Document Frequency" },
+                {"name": "TF_IDF" },
                 {"name": "Text_Classifier" },
                 {"name": "Text_Parser" },
                 {"name": "TextChunker" },
@@ -84,9 +84,7 @@
         {
             "name": "Naive Bayes",
             "children": [
-                {"name": "NaiveBayesMap" },
-                {"name": "NaiveBayesReduce" },
-                {"name": "NaiveBayesPredict" }
+                {"name": "Naive Bayes Functions" }
             ]
         },
         {
@@ -100,8 +98,8 @@
             "name": "Association Analysis",
             "children": [
                 {"name": "Basket_Generator" },
-                {"name": "Collaborative Filtering" },
-                {"name": "Weighted-sum Recommender" }
+                {"name": "CFilter" },
+                {"name": "WSRecommender" }
             ]
         },
         {
