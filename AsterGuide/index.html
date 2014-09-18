@@ -788,12 +788,10 @@
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    d3.json("aster_functions.json", function(error, flare) {
-      root = flare;
-      root.x0 = height / 2;
-      root.y0 = 0;
+    d3.json("aster_functions.json", function(error, flare){
+        thisroot = flare;
 
-      new_root = JSON.parse(JSON.stringify(root));
+        new_root = JSON.parse(JSON.stringify(root));
       console.log(new_root);
 
       names = [];
@@ -802,6 +800,12 @@
               names.push(new_root['children'][i]['children'][j].name);
           }
       };
+    })
+
+    d3.json("aster_functions.json", function(error, flare) {
+      root = flare;
+      root.x0 = height / 2;
+      root.y0 = 0;
 
       function collapse(d) {
         if (d.children) {
