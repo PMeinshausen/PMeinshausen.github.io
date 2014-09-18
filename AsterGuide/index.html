@@ -800,7 +800,7 @@
               names.push(new_root['children'][i]['children'][j].name);
           }
       };
-      console.log(names);
+      names_list = JSON.parse(JSON.stringify(names));
     })
 
     d3.json("aster_functions.json", function(error, flare) {
@@ -930,8 +930,8 @@
     }
 
     function update_info(d){
-        for (i=0; i<names.length; i++){
-            var the_id = names[i];
+        for (i=0; i<names_list.length; i++){
+            var the_id = names_list[i];
             $(document.getElementById(the_id)).hide();
         }
         
