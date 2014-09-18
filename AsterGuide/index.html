@@ -119,7 +119,29 @@
                 <script src="https://gist.github.com/PMeinshausen/c22f77a7f554ad737ad9.js"></script>
             </div>
             <div id="DWT" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">DWT</h2>
+                <h4>Summary</h4>
+                <p>
+                    This function implements Mallat’s algorithm which is an iterate algorithm in the Discrete Wavelet Transform (DWT) field, and is designed to apply wavelet transform on multiple sequences simultaneously. The input is typically a set of time series sequences. Each sequence consists of values in a specific order. You specify the wavelet name, transform level, and optionally the extension mode. The result is the transformed sequences in Hilbert space with corresponding component identifier and index. The transformation is also called decomposition.
+                </p>
+                <p>
+                    The result can be filtered to reduce the length of the sequence. And the original sequence can be reconstructed according to the result via IDWT. Thus the function can be adopted in compression and denoise.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    DWT is a kind of time-frequency analysis tool for which the wavelets are discretely sampled. DWT is different from the Fourier transform, which provides frequency information on the whole time domain. A key advantage of DWT is that it provides frequency information at different time points.
+                </p>
+                <p>
+                    Mallat’s algorithm can be described as several iterative steps. For example, in the case of a 3- level wavelet transform, the algorithm performs these steps:
+                </p>
+                <p>
+                    <span style="font-weight:bold">1)</span> Use <span style="font-style:italic">S(n)</span> as the original time domain sequence as the input of level 1.<br>
+                    <span style="font-weight:bold">2)</span> The input sequence is convolved with high-pass filter <span style="font-style:italic">h(n)</span> and low-pass filter <span style="font-style:italic">g(n)</span>, then the convolved sequences are downsampled respectively.
+                    Two sequences are generated. The generated sequences are the detail coefficients <span style="font-style:italic">Dk</span> and the approximation coefficients <span style="font-style:italic">Ak</span> in level <span style="font-style:italic">k</span>.<br>
+                    <span style="font-weight:bold">3)</span> If current level <span style="font-style:italic">k</span> reaches max transform level <span style="font-style:italic">n</span>, then go to the end. Otherwise, <span style="font-style:italic">Ak</span> is used as the input sequence for the next level; increase the current level <span style="font-style:italic">k</span> by 1, then go to step 2.
+                </p>
+                <h4>Usage</h4>
+                <script src="https://gist.github.com/PMeinshausen/4a41721519692a9e3ec4.js"></script>
             </div>
             <div id="DWT2D" style="display:none">
                 <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
