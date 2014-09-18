@@ -474,9 +474,9 @@
           });
           //.on('click', function(d){ update_info(d); });
 
-      d3.select('.node_text')
+      d3.selectAll('.node_text')
           .on('click', function(d){
-            console.log(d.name);
+            console.log("this");
             update_info(d);
       });
 
