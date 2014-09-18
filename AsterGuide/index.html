@@ -843,7 +843,7 @@
       nodeEnter.append("circle")
           .attr("r", 1e-6)
           .style("fill", function(d) { return d._children ? "orange" : "#FF6E00"; })
-          .on("click", click);
+          .on("click", function(d){ click(d); update(d); });
 
       nodeEnter.append("text")
           .attr('class', 'node_text')
@@ -860,12 +860,13 @@
           });
           //.on('click', function(d){ update_info(d); });
 
-      
+      /*
       d3.selectAll('.node_text')
           .on('click', function(d){
             console.log("this");
             update_info(d);
       });
+      */
 
     
 
@@ -929,7 +930,7 @@
         d.children = d._children;
         d._children = null;
       }
-      update(d);
+      //update(d);
       //update_info(d);
     }
 
