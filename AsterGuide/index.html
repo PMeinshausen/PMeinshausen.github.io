@@ -148,17 +148,112 @@
                 </div>
                 <script src="https://gist.github.com/PMeinshausen/4a41721519692a9e3ec4.js"></script>
             </div>
-            <div id="DWT2D" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+            <div id="DWT2D" style="display:none;">
+                <h2 class="text-center">DWT2D</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    This function implements wavelet transform on 2 dimensional input, and it is designed to apply wavelet transform on multiple sequences simultaneously. Typically, each sequence is a matrix contains the position in 2 dimensional space and the corresponding values.
+                </p>
+                <p>
+                    Each row in a sequence consists of the sequence identifier (optional), the index of Y axis, the index of X axis, and the corresponding one or more values. Then, you specify the wavelet name, transform level, and optionally the extension mode.
+                </p>
+                <p>
+                    The result is the transformed sequences in Hilbert space with the corresponding component identifier and index. The transformation is also called decomposition as the result is given in multiple components.
+                </p>
+                <p>
+                    A typical use case of DWT2d is:<br>
+                    <span style="font-weight:bold">1)</span>Apply DWT2d to the original data and generate the coefficients of matrices and corresponding meta-data.<br>
+                    <span style="font-weight:bold">2)</span>Filter the coefficients by various methods (for example, minimum threshold, top n coefficients or just keep the approximate coefficients) according to the object.<br>
+                    <span style="font-weight:bold">3)</span>Reconstruct the matrices from the filtered coefficients and compare them with the original ones.<br>
+                <h4>Background</h4>
+                <p>
+                    DWT is a kind of time-frequency analysis tool for which the wavelets are discretely sampled. DWT is different from the Fourier transform, which provides frequency information on the whole time domain. A key advantage of DWT is that it provides frequency information at different time points, which is especially useful to keep local information.
+                </p>
+                <p>
+                    Similar to 1-dimensional DWT, Mallat’s algorithm can be represented as the following iterative steps.                </p>
+                <p>
+                    <span style="font-weight:bold">1)</span> Use the original time domain sequence (2 dimensional matrix) as the input of level 1.<br>
+                    <span style="font-weight:bold">2)</span> In level k, each row of the input matrix is convolved with low-pass filter g(n) and high-pass filter h(n), then each convolved rows are downsampled by column, respectively. Thus, two matrices are generated. After that, each column of the two generated matrices are convolved with the filters g(n) and h(n), and downsampled again. Finally four matrices are given, they are marked as approximation coefficients Ak, horizontal detail coefficients Hk,vertical detail coefficients Vk and diagonal detail coefficients Dk for level n, respectively.<br>
+                    <span style="font-weight:bold">3)</span> If current level k reaches max transform level n, then go to the end. Otherwise, Ak is used as the input matrix of next level; increase the current level k by 1, then go to step 2.
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/6eaa5447042379f55951.js"></script>
             </div>
             <div id="FrequentPaths" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">DWT2D</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    FrequentPaths is a function for mining frequent subsequences as patterns in a sequence database. It has broad applications including the analyses of customer purchase behavior, web access patterns, disease treatments, DNA sequences, and so on.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    In a sequential pattern mining application, each sequence consists of an ordered list of itemsets, and each itemset contains at least one item. The items are unordered if there are more than one item in one itemset.
+                </p>
+                <p>
+                    If you use a letter in lower case to represent an item, use "()" to enclose items in an itemset and "&lt;&gt;" to enclose itemsets in a sequence, then the sequence "&lt;(a), (b,c), (d)&gt;" is identical to "&lt;(a),(c,b),(d)&gt;" because items in one itemset are unordered, while sequence "&lt;(a),(b,c),(d)&gt;" is different from "&lt;(a),(d),(b,c)&gt;" because the itemsets are ordered. In web click stream analysis, there is only one item in each itemset, and in purchase behavior analysis there might be multiple items in one itemset as a customer might buy more than one item in one shopping session.                
+                </p>
+                <p>
+                    In sequential pattern mining, the conditions for a sequence α to be a subsequence of another sequence β are:
+                    <ul>
+                        <li>Each itemset ai in α must be a subset of another itemset bj in β.</li>
+                        <li>The ai elements in α must have the same order as the bj elements in β.</li>
+                    </ul>
+                </p>
+                <p>
+                    A more formal definition is: a sequence α=a1a2...an is called as a subsequence of another sequence β=&lt;b1b2...bm&gt; and β a super sequence of α, if there exists integers 1≤j1&lt;j2&lt;...≤jn≤m such that a1⊆bj1,a2⊆bj2,...,an⊆bjn.
+                </p>
+                <p>
+                    The support of a sequence α in a sequence dataset SDB is defined as the number of sequences in SDB that contain α (that is, they are super sequences of α). 
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/645dab9807b4f9f54146.js"></script>
             </div>
             <div id="IDWT" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">IDWT</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    IDWT is the inverse function of DWT. IDWT applies inverse wavelet transforms on multiple sequences simultaneously. The inputs are the coefficients of sequences with specified order outputted by DWT and the corresponding wavelet information used in DWT. After running IDWT, the output sequences are the sequences in time domain. Because the output is comparable with the input of DWT, the transformation is also called reconstruction.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    These steps describe a typical use case of IDWT:
+                </p>
+                <ol>
+                    <li>Apply DWT to sequences, generate the coefficients of sequences and corresponding meta data.</li>
+                    <li>Filter the coefficients by various methods (for example, minimum threshold and top n coefficients) according to the object.</li>
+                    <li>Reconstruct the sequences from the filtered coefficients and compare them with the original ones.</li>
+                </ol>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/b0e0bdbab4399c948543.js"></script>
             </div>
             <div id="IDWT2D" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">IDWT2D</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    IDWT2d is the inverse function of DWT2d. Or, more specifically, it applies inverse wavelet transforms on multiple sequences simultaneously. The inputs are the coefficients of sequences with specified order outputted by DWT and the corresponding wavelet information generated during the transformation. After running IDWT2d, the output sequences are the original sequences in matrix forms. As the output is comparable with the input of DWT, the transformation is also called reconstruction.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    Similar to IDWT, a typical use case of IDWT2d consists of the following steps:
+                </p>
+                <ol>
+                    <li>Apply DWT2d to the original data, generate the coefficients of matrices and corresponding meta data.</li>
+                    <li>Filter the coefficients by various methods (for example, minimum threshold and top n coefficients) according to the object. Thus we may compress the original matrices.</li>
+                    <li>Reconstruct the matrices from the filtered coefficients and compare them with the original ones.</li>
+                </ol>
+                <p>
+                    Also, there exists other cases. For example, you may find the flaws in the transformed domain according to the energy of different components and map it back to the original position according to the indexes.
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/39a4960a9c5c3b60d1f5.js"></script>
             </div>
             <div id="Path_Analyzer" style="display:none">
                 <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
