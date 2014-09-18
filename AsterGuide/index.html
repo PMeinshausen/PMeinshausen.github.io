@@ -468,7 +468,7 @@
           .on('mouseover', function(){
             d3.select(this).style({'background-color': 'orange'});
           })
-          .on('mouseout'), function(){
+          .on('mouseout', function(){
             d3.select(this).style({'background-color': 'none'});
           })
           .on('click', function(d){ update_info(d); });
