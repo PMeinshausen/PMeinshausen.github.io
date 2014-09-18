@@ -791,7 +791,7 @@
     d3.json("aster_functions.json", function(error, flare){
         thisroot = flare;
 
-        new_root = JSON.parse(JSON.stringify(root));
+        new_root = JSON.parse(JSON.stringify(thisroot));
       console.log(new_root);
 
       names = [];
