@@ -24,17 +24,7 @@
 
 
 <style>
-    /* centered columns style */
-    .row-centered {
-        text-align:center;
-    }
-    .col-centered {
-        display:inline-block;
-        float:none;
-        text-align:left;
-        margin-right:-4px;
-    }
-    
+
     body {
         background-image:url("noisy-texture.png");
     }
@@ -60,15 +50,17 @@
 <body>
 <div class="container">
     <div class="row row-centered">
-        <div class="col-md-12 col-centered">
+        <div class="col-md-12">
             <h2 class="text-center"><span style="color:#FF6E00">Teradata Aster</span> Functions Guide</h2>
         </div>
         <div class="col-md-7" id="chart"></div>
-        <div class="col-md-5 col-centered" id="function_text">
+        <div class="col-md-5" id="function_text">
             <div id="Attribution" style="display:none">
-                <h2>Attribution</h2>
-                <p>The attribution operator is often used in web page analysis. Companies would like to assign weights to pages before certain events, such as a 'click' or a 'buy'. This attribution function enables you to calculate attributions by using a wide range of distribution models.<br> 
-                There are two different ways to call the attribution SQL-MR function, depending on how many inputs you are using. The multiple input and the single input function calls use very different syntax, so they are documented separately:
+                <h2 class="text-center">Attribution</h2>
+                <p>
+                    The attribution operator is often used in web page analysis. Companies would like to assign weights to pages before certain events, such as a 'click' or a 'buy'. This attribution function enables you to calculate attributions by using a wide range of distribution models.</p>
+                <p>
+                    There are two different ways to call the attribution SQL-MR function, depending on how many inputs you are using. The multiple input and the single input function calls use very different syntax, so they are documented separately:
                 </p>
                 <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
             </div>
