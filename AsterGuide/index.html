@@ -467,10 +467,7 @@
           .style("fill-opacity", 1e-6)
           .on('mouseover', function(d){
             console.log(d.name);
-            d3.select(this).select('text')
-                .style('stroke', "#FF6E00")
-                .style('fill', '#FF6E00')
-                .style('color', '#FF6E00');
+            d3.select(this).select('text').style('fill', 'red');
           })
           .on('click', function(d){ update_info(d); });
 
