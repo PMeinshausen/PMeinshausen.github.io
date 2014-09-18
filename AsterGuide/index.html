@@ -371,8 +371,8 @@
                 <h4>Usage</h4>
                 </div>
                 <ul class="nav nav-tabs" role="tablist">
-                    <li class="active"><a href="#partition_function" role="tab" data-toggle="tab">Multiple Input</a></li>
-                    <li><a href="#multiple_input_function" role="tab" data-toggle="tab">Single Input</a></li>
+                    <li class="active"><a href="#partition_function" role="tab" data-toggle="tab">Partition function</a></li>
+                    <li><a href="#multiple_input_function" role="tab" data-toggle="tab">Multiple Input</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="partition_function">
@@ -384,34 +384,195 @@
                 </div>
             </div>
             <div id="Sessionization" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Sessionization</h2>
+                <div class="text_scroll">
+                <h4>Background</h4>
+                <p>
+                    Sessionization is the process of mapping each click in a clickstream to a unique session identifier. We define a session as a sequence of clicks by a particular user where no more than n seconds pass between successive clicks (that is, if we don’t see a click from a user for n seconds, we start a new session).
+                </p>
+                <p>
+                    Sessionization can be easily done with the Sessionize SQL-MapReduce function. Sample code is included with the Aster SQL-MapReduce Java API. This sessionize SQL-MapReduce function can also be used to detect web crawler (“bot”) activity. If the time between successive clicks is less than the user-specified threshold, bot activity will be flagged.
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/4cacd81e23f66a08c208.js"></script>
             </div>
             <div id="nPath" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">What is Teradata Aster nPath?</h2>
+                <div class="text_scroll">
+                <p>
+                    The Teradata Aster nPath SQL-MR function allows you to perform regular pattern matching over a sequence of rows from one or more inputs. For clarity, this document refers to each sequence of matched rows as a matched pattern.                
+                </p>
+                <p>
+                    With Teradata Aster nPath, you can find sequences of rows that match a pattern of your choice. The Teradata Aster nPath function lets you use symbols when building patterns. Symbols let you define the pattern matching conditions and help you extract information from these matched rows.
+                </p>
+                <p>
+                    The Teradata Aster nPath function lets you:
+                </p>
+                <ol>
+                    <li>use a regular expression to specify a pattern you want to match in an ordered collection of rows and label individual matching rows with symbols; and</li>
+                    <li>compute SQL aggregates on or find particular values in each matched pattern (Teradata Aster nPath uses the symbols you define for matching rows to get these aggregates and values).</li>
+                <ol>
+                <p>
+                    The Teradata Aster nPath function uses regular expressions because they are simple, widely understood, and flexible enough to express most search criteria. While most uses of regular expressions focus on matching patterns in strings of text; Teradata Aster nPath enables matching patterns in sequences of rows.
+                </p>
+                <p>
+                    The Teradata Aster nPath function performs fast analysis on ordered data. The clauses in Teradata Aster nPath let you express complicated pathing queries and ordering relationships that might otherwise require you to write multi-level joins of relations in SQL. With Teradata Aster nPath, you indicate a desired ordering and then specify a pattern that is matched across the ordered rows of data.
+                </p>
+                <p>
+                    For each matched pattern in the sequence of rows, Teradata Aster nPath generates a row of output that contains SQL aggregates computed over the rows in the matched pattern.
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/b35dea788fbcaa25c756.js"></script>
             </div>
             <div id="Approximate Distinct Count" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Approximate Distinct Count</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    Based on probabilistic counting algorithms, this function quickly estimates the number of distinct values in a column or combination of columns, while scanning the table only once.
+                </p>
+                <p>
+                    For a column or column combination with large cardinality, it can calculate an approximate count of the distinct values in much less time than would be required to calculate a precise distinct count using SQL’s DISTINCT.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    For more information about Probabilistic Counting Algorithms, see Probabilistic Counting Algorithms for Data Base Applications, by Philippe Flajolet and G. Nigel Martin (http://portal.acm.org/citation.cfm?id=5215).
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/f88634b0833ff41051e7.js"></script>
             </div>
             <div id="Approximate Percentile" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Approximate Percentile</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    This function computes approximate percentiles for one or more columns of data. The accuracy of the approximation is a parameter the user can vary. Higher accuracy requires longer compute time and vice versa. Optionally, you can specify a column to group by, to compute approximate percentiles over different groups.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    The function is based on an algorithm developed by Greenwald and Khanna. It gives e- approximate quantile summaries of a set of N elements, where e is the value you specify as the function’s ERROR parameter. Given any rank r, an e-approximate summary returns a value whose rank r' is guaranteed to be within the interval [r - eN, r + eN]. The algorithm has a worst case space requirement of O((1/e) * log(eN)).
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/24e5a689047d60973370.js"></script>
             </div>
             <div id="ConfusionMatrix" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">ConfusionMatrix</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    In the field of artificial intelligence, a confusion matrix is a specific table layout that allows visualization of the performance of an algorithm, typically a supervised learning one (in unsupervised learning it is usually called a matching matrix).
+                </p>
+                <p>
+                    Each column of the matrix represents the instances in a predicted class, while each row represents the instances in an actual class.
+                </p>
+                <p>
+                    The name stems from the fact that it makes it easy to see if the system is confusing two classes (that is, commonly mislabeling one as another). Outside artificial intelligence, the confusion matrix is often called the contingency table or the error matrix.
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/9bba8d071aa79ee4aec3.js"></script>
             </div>
             <div id="Correlation" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Correlation</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The correlation functions, Corr_Reduce and Corr_Map, compute a global correlation between any pair of columns (COLUMNPAIRS) from a table. You may run this pair of functions on multiple pairs of columns in a single invocation. Measuring correlation allows you to determine if the value of one variable is useful in predicting the value of another.
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/f70803be05ca96251f4d.js"></script>
             </div>
             <div id="Distribution Matching" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Distribution Matching</h2>
+                <div class="text_scroll">
+                <p>
+                    The distribution matching function distnmatch carries out hypothesis testing and finds the best matching distribution for the data
+                </p>
+                <h4>Summary</h4>
+                <p>
+                    The distnmatch function tests the hypothesis that the sample data comes from the specified reference distribution. In this mode, this function carries out up to four tests simultaneously:
+                </p>
+                <ul>
+                    <li>Anderson-Darling test</li>
+                    <li>Kolmogorov-Smirnov test</li>
+                    <li>Cramer-von Mises criterion</li>
+                    <li>Pearson's Chi-squared test</li>
+                </ul>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="EMAVG" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">EMAVG</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The exponential moving average function, EMAVG, computes the average over a number of points in a time series but applies a damping (weighting) factor to older values. The weighting for the older values decreases exponentially without entirely discarding the older values.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    Exponential moving average (EMA), sometimes also called an exponentially weighted moving average (EWMA), applies weighting factors that decrease exponentially. The weighting for each older data point decreases exponentially, giving much more importance to recent observations while still not discarding older observations entirely.
+                </p>
+                <p>
+                    We compute the arithmetic average of the first n rows as specified by START_ROWS argument. Then, for each subsequent row, we compute the new value as:
+                </p>
+                <p style="font-family:Latin Modern Mono">
+                    new_emavg = alpha * new_value + (1-alpha) * old_emavg
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/feffd707471e071bd1df.js"></script>
             </div>
             <div id="Enhanced Histogram Function" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Enhanced Histogram Function</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The enhanced histogram function (represented by Hist_Map and Hist_Reduce) adds these new capabilities over the existing histogram function (represented by histogram_map and histogram_reduce):
+                </p>
+                <ul>
+                    <li>Bin selection—The new function is equipped with algorithms that determine the number of equi-spaced bins without your intervention.</li>
+                    <li>Non-integer bin ranges—The new function supports non-integer bin ranges.</li>
+                    <li>Bin IDs and bin ranges in the output columns—By default, the output columns include bin IDs, bin ranges, and bin percentages.</li>
+                    <li>Bin ranges—The new function supports left-inclusive and right-inclusive bin ranges in the new function.</li>
+                    <li>Bin breaks—The bin breaks generated by the function are always aligned to multiples of a power of ten or multiples of five times a power of ten.</li>
+                    <li>Multiple histograms—You can build separate histograms for distinct groups by values.</li>
+                </ul>
+                </div>
             </div>
             <div id="FMeasure" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">FMeasure</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The FMeasure function calculates the accuracy of a test (usually the output of a classifier).
+                </p>
+                <h4>Background</h4>
+                <p>
+                    In statistics, the F1 score (also F-score or F-measure) is a measure of a test’s accuracy. It considers both the precision p and the recall r of the test to compute the score:
+                </p>
+                <ul>
+                    <li>p is the number of correct results divided by the number of all returned results.</li>
+                    <li>r is the number of correct results divided by the number of results that should have been returned.</li>
+                </ul>
+                <p>
+                    The F1 score can be interpreted as a weighted average of the precision and recall, where an F1 score reaches its best value at 1 and its worst score at 0.
+                </p>
+                <p>
+                    The traditional F-measure or balanced F-score (F1 score) is the harmonic mean of precision and recall:
+                </p>
+                <p>
+                    F =2*precision*recall / (precision+recall)</br>
+                    The general formula for a positive real β is:</br>
+                    Fβ =(1+β*β)*precision*recall /(β*β*precision+recall)
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/84d802a638bc4261c221.js"></script>
             </div>
             <div id="GLM" style="display:none">
                 <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
