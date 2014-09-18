@@ -28,6 +28,9 @@
     h4 {
         color:#173E6E;
     }
+    h2 {
+        color:#173E6E;
+    }
 
     body {
         background-image:url("noisy-texture.png");
@@ -256,19 +259,129 @@
                 <script src="https://gist.github.com/PMeinshausen/39a4960a9c5c3b60d1f5.js"></script>
             </div>
             <div id="Path_Analyzer" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Path_Analyzer</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The Path_Analyzer function automates path analysis. This function acts as a wrapper function of the following three path functions, which you can use to perform clickstream analysis of common sequences of user pageviews on websites:
+                </p>
+                <ul>
+                    <li>Path_Generator—Generates all the possible paths (sequences of pageviews on a website).</li>
+                    <li>Path_Start—Generates all the child paths for a particular parent path and sums up the count of times each child path was traveled by a user.</li>
+                    <li>Path_Summarizer—Counts the number of times various paths were traveled and measures the depth in pageviews of each path.</li>
+                </ul>
+                <p>
+                    The Path_Analyzer function is useful for website clickstream analysis of website traffic and other sequence/path analysis tasks such as advertisement or referral attribution.
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/bfae79eddf8216b2816d.js"></script>
             </div>
             <div id="Path_Generator" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Path_Generator</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    This function takes as input a set of paths where each path is a route (series of pageviews) taken by a user in a single session from the start of the session until its end. For each path, Path Generator generates the correctly formatted sequence and all possible sub-sequences for further analysis by the Path Summarizer function. The first element in the path is the first page a user could visit. The last element of a path is the last page visited by the user.
+                </p>
+                <p>
+                    Together, the Path Generator, Path Summarizer, and Path Starter functions are used to perform clickstream analysis of common sequences of users’ pageviews on a website. The roles of the three functions are:
+                </p>
+                <ul>
+                    <li>Path Generator generates all the possible paths (sequences of pageviews on a website);</li>
+                    <li>Path Summarizer counts the number of times various paths were traveled and measures the depth in pageviews of each path; and</li>
+                    <li>Path Starter generates all the child paths for a particular parent path and sums up the count of times each child path was traveled.</li>
+                </ul>
+                <p>
+                    In the discussion below, we will use the terms:
+                </p>
+                <ul>
+                    <li>Path: An ordered, start-to-finish series of actions (for example, pageviews) for which you wish to generate sequences and sub-sequences. You will run Path Generator on the set of all observed paths users have traveled while navigating your website.</li>
+                    <li>Sequence: The sequence is the path prefixed with a carat ('^') to indicate the start of the path. For example, if a user visited page a, page b, and page c in that order, we would say that his session had the sequence, ^,a,b,c.</li>
+                    <li>Sub-sequence: For a given sequence of actions, a sub-sequence is one possible subset of the steps that begins with the initial action. For example, the path a,b,c generates three sub- sequences: ^,a; ^,a,b; and ^,a,b,c.</li>
+                </ul>
+                <h4>Background</h4>
+                <p>
+                    This tool is useful for performing clickstream analysis of website traffic. These functions can also be used for doing other types of sequence/path analysis, such as the analysis required for advertisement attribution and referral attribution.
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/6c2a3f97f9993d15747d.js"></script>
             </div>
             <div id="Path_Start" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Path_Start</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The output of Path Summarizer function is the input to this function. This function generates all the children for a particular parent and sums up their count. Note that the input data has to be partitioned by the parent column.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    This function is useful for website clickstream analysis and other sequence/path analysis tasks such as advertisement attribution.
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/697ef4725b9a6ef682fc.js"></script>
             </div>
             <div id="Path_Summarizer" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Path_Summarizer</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The output of the Path Generator function is the input to this function. This function is used to sum counts on nodes. A node can either be a plain sub-sequence or an exit sub-sequence. An exit sub-sequence is one in which the sequence and the sub-sequence are the same. Exit sub- sequences are denoted by appending a dollar sign ('$') to the end of the sequence.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    This function is useful for website clickstream analysis and other sequence/path analysis tasks such as advertisement attribution.
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <script src="https://gist.github.com/PMeinshausen/b94bebb64731887a6473.js"></script>
             </div>
             <div id="SAX" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">SAX</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    Symbolic Aggregate approXimation (SAX) transforms original time series data into symbolic strings. Once this transformation is complete, the data is more suitable for many additional types of manipulation, both because of its smaller size and the relative ease with which patterns can be identified and compared.                
+                </p>
+                <h4>Background</h4>
+                <p>
+                    A time series is a collection of data observations made sequentially in time. Time series occur in virtually every medical, scientific, entertainment and business domain.
+                </p>
+                <p>
+                    Symbolic Aggregate approXimation uses a simple algorithm, with low computational complexity to create symbolic strings from time series data. Using a symbolic representation enables additional functions (for example, Teradata Aster nPath) to easily operate on the data.
+                </p>
+                <p>
+                    The data can also be manipulated using common algorithms such as hashing or regular expression pattern matching. In classic data mining tasks such as classification, clustering, and indexing, SAX is accepted as being as good as some well-known, but storage-intensive methods like Discrete Wavelet Transform (DWT) and Discrete Fourier Transform (DFT).
+                </p>
+                <p>
+                    SAX transforms a time series X of length n into the string of arbitrary length w, where w &lt; n, using an alphabet A of size a &gt; 2.
+                </p>
+                <p>
+                    The SAX algorithm consists of two steps:
+                </p>
+                <ol>
+                    <li>SAX transforms the original time series data into a PAA (Piecewise Aggregate Approximation) representation. This effectively splits the time series data into intervals, and then assigns each interval to one of a limited set of alphabetical symbols (letters) based on the data being examined. The set of symbols used is based on dividing all observed data into “chunks” or thresholds, using the normal distribution curve. Each of these values, or “chunks” is represented by a symbol (a letter). This is a simple way to reduce the dimensionality of the data.</li>
+                    <li>The PAA is then converted into a string consisting of letters that represents the patterns occurring in the data over time.</li>
+                </ol>
+                <p>
+                    The symbols created by SAX correspond to the time series features with equal probability, allowing them to be compared and used for further manipulation with reliable accuracy. The time series that are normalized using the zero mean and unit of energy follow the Normal distribution law. By using Gaussian distribution properties, it's easy for SAX to pick equal- sized areas under the Normal curve using lookup tables for the cut lines coordinates, slicing the under-the-Gaussian-curve area. The x coordinates of these lines are called “breakpoints” in the SAX algorithm context.
+                </p>
+                <h4>Usage</h4>
+                </div>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#partition_function" role="tab" data-toggle="tab">Multiple Input</a></li>
+                    <li><a href="#multiple_input_function" role="tab" data-toggle="tab">Single Input</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="partition_function">
+                        <script src="https://gist.github.com/PMeinshausen/36c1efebda6641de5c16.js"></script>
+                    </div>
+                    <div class="tab-pane" id="multiple_input_function">
+                        <script src="https://gist.github.com/PMeinshausen/b1cd8157575e4337bdf7.js"></script>
+                    </div>
+                </div>
             </div>
             <div id="Sessionization" style="display:none">
                 <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
