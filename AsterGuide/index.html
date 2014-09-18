@@ -793,10 +793,12 @@
       root.x0 = height / 2;
       root.y0 = 0;
 
+      new_root = JSON.parse(JSON.stringify(root));
+
       names = [];
-      for (i=0; i < root['children'].length; i++){
-          for (j=0; j < root['children'][i]['children'].length; j++){
-              names.push(root['children'][i]['children'][j].name);
+      for (i=0; i < new_root['children'].length; i++){
+          for (j=0; j < new_root['children'][i]['children'].length; j++){
+              names.push(new_root['children'][i]['children'][j].name);
           }
       };
 
