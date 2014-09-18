@@ -799,7 +799,6 @@
               names.push(root['children'][i]['children'][j].name);
           }
       };
-      console.log(names);
 
       function collapse(d) {
         if (d.children) {
@@ -919,11 +918,6 @@
       }
       update(d);
       //update_info(d);
-    }
-
-    function show_text(d){
-        var ele = document.getElementById('function_text');
-        ele.style.display = "block";
     }
 
     function update_info(d){
