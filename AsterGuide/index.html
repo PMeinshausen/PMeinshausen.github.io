@@ -468,7 +468,9 @@
           .on('mouseover', function(){
             console.log("mouseOver");
             d3.select(this).select('text')
-                .style('fill', '#FF6E00');
+                .style('stroke', "#FF6E00")
+                .style('fill', '#FF6E00')
+                .style('color', '#FF6E00');
           })
           .on('click', function(d){ update_info(d); });
 
