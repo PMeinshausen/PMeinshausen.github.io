@@ -766,7 +766,9 @@
         </div>
     </div>
 
-<script>    
+<script>
+
+    var names_list = ["Attribution", "CMAVG", "DTW", "DWT", "DWT2D", "FrequentPaths", "IDWT", "IDWT2D", "Path_Analyzer", "Path_Generator", "Path_Start", "Path_Summarizer", "SAX", "Sessionization", "nPath", "Approximate Distinct Count", "Approximate Percentile", "ConfusionMatrix", "Correlation", "Distribution Matching", "EMAVG", "Enhanced Histogram Function", "FMeasure", "GLM", "GLMPredict", "Histogram", "KNN", "LARS Functions", "LinReg", "Percentile", "Principal Component Analysis", "Sample", "SMAVG", "Support Vector Machines", "VWAP", "WMAVG", "LDA Functions", "Levenshtein Distance", "Naive Bayes Text Classifier", "Named Entity Recognition", "nGram", "PoSTagger", "Sentenizer", "Sentiment Extraction Functions", "TF_IDF", "Text_Classifier", "Text_Parser", "TextChunker", "TextMorph", "TextTagging", "TextTokenizer", "Canopy", "KMeans", "KMeansPlot", "Minhash", "Naive Bayes Functions", "Random Forest Functions", "Single Decision Tree Functions", "Basket_Generator", "CFilter", "WSRecommender", "AllPairsShortestPath", "Betweenness", "Closeness", "EigenvectorCentrality", "LocalClusteringCoefficient", "LoopyBeliefPropagation", "nTree", "PageRank", "Antiselect", "Apache Log Parser", "IdentityMatch", "IpGeo", "JSONParser", "Multicase", "MurmurHash", "OutlierFilter", "PSTParserAFS", "Pack", "Pivot", "Unpack", "Unpivot", "XMLParser", "XMLRelation", "CfilterViz", "NpathViz"]    
 
     var margin = {top: 20, right: 80, bottom: 20, left: 120},
         width = 680 - margin.right - margin.left,
@@ -788,11 +790,11 @@
       .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+    /*
     d3.json("aster_functions.json", function(error, flare){
         thisroot = flare;
 
         new_root = JSON.parse(JSON.stringify(thisroot));
-      console.log(new_root);
 
       names = [];
       for (i=0; i < new_root['children'].length; i++){
@@ -801,7 +803,9 @@
           }
       };
       names_list = JSON.parse(JSON.stringify(names));
+      console.log(names_list);
     })
+    */
 
     d3.json("aster_functions.json", function(error, flare) {
       root = flare;
