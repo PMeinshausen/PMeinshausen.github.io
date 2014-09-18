@@ -460,6 +460,7 @@
           .style("fill", function(d) { return d._children ? "orange" : "#FF6E00"; });
 
       nodeEnter.append("text")
+          .attr('class', 'node_text')
           .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
           .attr("dy", ".35em")
           .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
@@ -472,6 +473,12 @@
             d3.select(this).style({'text-decoration': 'none'});
           });
           //.on('click', function(d){ update_info(d); });
+
+      d3.select('#node_text')
+          .on('click', function(d){
+            console.log(d.name);
+            update_info(d);
+      });
 
       var nodeUpdate = node.transition()
           .duration(duration)
