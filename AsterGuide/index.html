@@ -452,12 +452,12 @@
 
       var nodeEnter = node.enter().append("g")
           .attr("class", "node")
-          .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
-          .on("click", click);
+          .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; });
 
       nodeEnter.append("circle")
           .attr("r", 1e-6)
-          .style("fill", function(d) { return d._children ? "orange" : "#FF6E00"; });
+          .style("fill", function(d) { return d._children ? "orange" : "#FF6E00"; })
+          .on("click", click);
 
       nodeEnter.append("text")
           .attr('class', 'node_text')
