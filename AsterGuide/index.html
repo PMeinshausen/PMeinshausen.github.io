@@ -117,8 +117,9 @@
                 <h4>Usage</h4>
                 <script src="https://gist.github.com/PMeinshausen/c22f77a7f554ad737ad9.js"></script>
             </div>
-            <div id="DWT" style="display:none; height:600; overflow-y:scroll">
-                <h2 class="text-center">DWT</h2>
+            <div class="panel panel-primary" id="DWT" style="display:none;">
+                <div class="panel-heading">DWT</div>
+                <div class="panel-body" style="max-height: 500; overflow-y: scroll;">
                 <h4>Summary</h4>
                 <p>
                     This function implements Mallat’s algorithm which is an iterate algorithm in the Discrete Wavelet Transform (DWT) field, and is designed to apply wavelet transform on multiple sequences simultaneously. The input is typically a set of time series sequences. Each sequence consists of values in a specific order. You specify the wavelet name, transform level, and optionally the extension mode. The result is the transformed sequences in Hilbert space with corresponding component identifier and index. The transformation is also called decomposition.
@@ -140,6 +141,7 @@
                     <span style="font-weight:bold">3)</span> If current level <span style="font-style:italic">k</span> reaches max transform level <span style="font-style:italic">n</span>, then go to the end. Otherwise, <span style="font-style:italic">Ak</span> is used as the input sequence for the next level; increase the current level <span style="font-style:italic">k</span> by 1, then go to step 2.
                 </p>
                 <h4>Usage</h4>
+                </div>
                 <script src="https://gist.github.com/PMeinshausen/4a41721519692a9e3ec4.js"></script>
             </div>
             <div id="DWT2D" style="display:none">
