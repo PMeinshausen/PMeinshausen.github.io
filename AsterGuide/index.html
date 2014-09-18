@@ -794,6 +794,7 @@
       root.y0 = 0;
 
       new_root = JSON.parse(JSON.stringify(root));
+      console.log(new_root);
 
       names = [];
       for (i=0; i < new_root['children'].length; i++){
@@ -847,16 +848,16 @@
           })
           .on('mouseout', function(){
             d3.select(this).style({'text-decoration': 'none'});
-          })
-          .on('click', function(d){ update_info(d); });
+          });
+          //.on('click', function(d){ update_info(d); });
 
-      /*
+      
       d3.selectAll('.node_text')
           .on('click', function(d){
             console.log("this");
             update_info(d);
       });
-    */
+    
 
       var nodeUpdate = node.transition()
           .duration(duration)
