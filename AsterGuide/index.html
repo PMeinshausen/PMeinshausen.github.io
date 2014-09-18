@@ -475,7 +475,7 @@
 
       var nodeUpdate = node.transition()
           .duration(duration)
-          .attr("transform", function(d) { return "translate(" + (d.y + 5) + "," + d.x + ")"; });
+          .attr("transform", function(d) { return "translate(" + d.y + "," + d.x + ")"; });
 
       nodeUpdate.select("circle")
           .attr("r", 6.0)
