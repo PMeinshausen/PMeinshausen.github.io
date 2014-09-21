@@ -1567,6 +1567,7 @@
             d3.select(this).style({'text-decoration': 'none'});
           })
           .on('click', function(d){ 
+            console.log(d.name);
             if ($.inArray(d.name, names_list) > -1){
                 update_info(d);
                 }
