@@ -1551,7 +1551,13 @@
       nodeEnter.append("circle")
           .attr("r", 1e-6)
           .style("fill", function(d) { return d._children ? "orange" : "#FF6E00"; })
-          .on("click", function(d){ click(d); update(d); });
+          .on("click", function(d){ 
+            if ($.inArray(d.name, names_list) < 0){
+                click(d); update(d); }
+            else {
+                update_info(d);
+            }
+            });
 
       nodeEnter.append("text")
           .attr('class', 'node_text')
