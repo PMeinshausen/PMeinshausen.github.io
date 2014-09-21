@@ -1560,7 +1560,6 @@
           .style("fill", function(d) { return d._children ? "orange" : "#FF6E00"; });
 
       nodeEnter.append("text")
-          .attr('class', 'node_text')
           .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
           .attr("dy", ".35em")
           .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
@@ -1658,10 +1657,7 @@
         
         for (i=0; i<names_list.length; i++){
             var the_id = names_list[i];
-            if (document.getElementById(the_id).style.display === ""){
-                $(document.getElementById(the_id)).hide();
-            }
-            if (document.getElementById(the_id).style.display === "block"){
+            if (document.getElementById(the_id).style.display === "" || document.getElementById(the_id).style.display == "block"){
                 $(document.getElementById(the_id)).hide();
             }
         };
