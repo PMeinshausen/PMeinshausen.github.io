@@ -1567,7 +1567,7 @@
           })
           .on('mouseout', function(){
             d3.select(this).style({'text-decoration': 'none'});
-          });
+          })
           .on('click', function(d){ 
             if ($.inArray(d.name, names_list) > -1){
                 update_info(d);
