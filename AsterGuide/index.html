@@ -1639,8 +1639,6 @@
 
     function click(d) {
 
-        console.log(d);
-
       if (d.children) {
         d._children = d.children;
         d.children = null;
@@ -1648,9 +1646,6 @@
         d.children = d._children;
         d._children = null;
       }
-      if ($.inArray(d.name, names_list) > -1){
-            update_info(d);
-        }
       //update(d);
       //update_info(d);
     };
@@ -1669,6 +1664,13 @@
         //$("div[id ="+d.name+"]").show();
 
     };
+
+    d3.selectAll('.node')
+        .on('click', function(d){
+            if ($.inArray(d.name, names_list) > -1){
+                update_info(d);
+            }
+        });
 
 </script>
 
