@@ -1648,6 +1648,9 @@
         d.children = d._children;
         d._children = null;
       }
+      if ($.inArray(d.name, names_list) > -1){
+            update_info(d);
+        }
       //update(d);
       //update_info(d);
     };
