@@ -1549,6 +1549,8 @@
           .attr("class", "node")
           .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
           .on("click", function(d){ 
+            console.log(d);
+            console.log(d.name);
             if ($.inArray(d.name, names_list) < 0){
                 click(d); update(d); }
             else {
@@ -1658,7 +1660,7 @@
         
         for (i=0; i<names_list.length; i++){
             var the_id = names_list[i];
-            if (document.getElementById(the_id).style.display === ""){
+            if (document.getElementById(the_id).style.display === "" || document.getElementById(the_id).style.display == "block"){
                 $(document.getElementById(the_id)).hide();
             }
         };
