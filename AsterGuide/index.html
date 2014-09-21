@@ -1650,9 +1650,10 @@
         
         for (i=0; i<names_list.length; i++){
             var the_id = names_list[i];
-            console.log(the_id);
-            console.log(document.getElementById(the_id).style.display);
             if (document.getElementById(the_id).style.display === ""){
+                $(document.getElementById(the_id)).hide();
+            }
+            if (document.getElementById(the_id).style.display === "block"){
                 $(document.getElementById(the_id)).hide();
             }
         };
