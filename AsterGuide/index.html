@@ -1537,6 +1537,8 @@
 
     function update(source) {
 
+      var old_item = "";
+
       var nodes = tree.nodes(root).reverse(),
           links = tree.links(nodes);
 
@@ -1572,7 +1574,9 @@
           })
           .on('click', function(d){ 
             if ($.inArray(d.name, names_list) > -1){
-                update_info(d);
+                update_info(d, old_item);
+                old_item = d.name;
+                console.log(old_item);
                 }
           });
 
@@ -1651,16 +1655,17 @@
       //update_info(d);
     };
 
-    function update_info(d){
-        
+    function update_info(d, old_item){
+        /*
         for (i=0; i<names_list.length; i++){
             var the_id = names_list[i];
             if (document.getElementById(the_id).style.display === "" || document.getElementById(the_id).style.display == "block"){
                 $(document.getElementById(the_id)).hide();
             }
         };
+        */
 
-        
+        $(document.getElementById(old_item)).hide();
         $(document.getElementById(d.name)).show();
         //$("div[id ="+d.name+"]").show();
 
