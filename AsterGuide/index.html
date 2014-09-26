@@ -1514,7 +1514,7 @@
       console.log(names_list);
     })
 */
-    
+    var old_item = "";
 
     d3.json("aster_functions.json", function(error, flare) {
       root = flare;
@@ -1536,8 +1536,6 @@
     d3.select(self.frameElement).style("height", "900px");
 
     function update(source) {
-
-      var old_item = "";
 
       var nodes = tree.nodes(root).reverse(),
           links = tree.links(nodes);
