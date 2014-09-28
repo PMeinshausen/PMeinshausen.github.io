@@ -62,6 +62,7 @@
     <div class="row">
         <div class="col-md-12">
             <h2 class="text-center"><span style="color:#FF6E00">Teradata Aster</span> Functions Guide</h2>
+            <p>Content taken from official Teradata Aster Analytics Foundation User Guide</p>
         </div>
         <div class="col-md-6" id="chart" style="padding-right: 0px;"></div>
         <div class="col-md-6" id="function_text" style="padding-left: 0px;">
@@ -1412,64 +1413,407 @@
                 </div>
             </div>
             <div id="LoopyBeliefPropagation" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">LoopyBeliefPropagation</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    Belief propagation, also known as sum-product message passing, is a message-passing algorithm for performing inference on graphical models, such as Bayesian networks and Markov random fields.  
+                </p>
+                <p>
+                    The LoopyBeliefPropagation function calculates the marginal distribution for each unobserved node, conditional on any observed nodes. This is a specific implementation on Bayesian Networks and binary variables.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    A Bayesian network is a probabilistic graphical model (a type of statistical model) that represents a set of random variables and their conditional dependencies via a directed acyclic graph (DAG). For example, a Bayesian network could represent the probabilistic relationships between diseases and symptoms. Given symptoms, the network can be used to compute the probabilities of the presence of various diseases.
+                </p>
+                <p>
+                    Formally, Bayesian networks are DAGs whose nodes represent random variables in the Bayesian sense: they may be observable quantities, latent variables, unknown parameters or hypotheses. Edges represent conditional dependencies; nodes that are not connected represent variables that are conditionally independent of each other. Each node is associated with a probability function that takes as input a particular set of values for the node’s parent variables and gives the probability of the variable represented by the node. For example, if the parents are m Boolean variables then the probability function could be represented by a table of 2m entries, one entry for each of the 2m possible combinations of its parents being true or false.
+                </p>
+                <p>
+                    As an example, suppose that there are two events which could cause grass to be wet: either the sprinkler is on or it's raining. Also, suppose that the rain has a direct effect on the use of the sprinkler (namely that when it rains, the sprinkler is usually not turned on). Then the situation can be modeled with a Bayesian network (shown). All three variables have two possible values, T (for true) and F (for false).
+                </p>
+                <p>
+                    In this implementation, you only need to specify the conditional dependence (directed edges, possibly weighted) between variables, and the observations for observed variables. The potential tables will be computed by the function.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="nTree" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">nTree</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    nTree is a hierarchical analysis SQL-MR function that can build and traverse tree structures on all worker machines. nTree reads the data only once from the disk and creates the trees in- memory. Note that this function requires the data to be partition-able and that each partition can fit in memory.  
+                </p>
+                <p>
+                    Most of the use-cases can be fit in memory. Each partition can consist of multiple trees. There is no restriction on the size of the tree. Since the data is not always clean and may contain cycles, there are different ways of handling the cycles.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    The following sections walk through various examples of use cases for nTree:
+                </p>
+                <p><strong>Equity Trading</strong></p>
+                <p>
+                    A large stock buy or sell order is typically broken into a number of child orders in order to fulfill the trade with a number of counter parties. Each child order can be further broken into child orders. All transactions are stored in a single stock transaction table, with the parent order linked to its child orders by means of a parent_id.
+                </p>
+                <p>
+                    A “root” order to sell, say, AAPL could result in a cascade of other AAPL transactions, all of which can trace their ancestry back to the original order. For example, you could have order_id 1 to sell 100 of AAPL lead to order 2 and 3 for 70 and 30 shares each. Those, in turn, could be further split up. Each row of this transaction table would include that row’s order_id as well as its parent_id.
+                </p>
+                <p>
+                    The broker needs to be able to identify the root order for each transaction. With SQL this would require an unknown number of self-joins. With Aster Database SQL-MR, you can partition the data by ticker symbol and then by date, and use the nTree function to create a tree from each root order.
+                </p>
+                <p><strong>Social Networking</strong></p>
+                <p>
+                    Social networks use multiple data sources to identify people and their relationships. For example, a user-user connection graph defines explicit connections the users have created on the network, a user-person invitation graph shows a mixture of user-user connections and user-email connections, and finally, address book data provides a user-email graph.
+                </p>
+                <p>
+                    It is often important for a social network to clean up its data by detecting when a person has multiple accounts on the network. In a case like this, you can use nTree to generate a tree for every account. You can then compare these trees to find trees that are very likely to have the same person as the root-node.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="PageRank" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">PageRank</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    This function computes PageRank for a directed graph.  
+                </p>
+                <h4>Background</h4>
+                <p>
+                    PageRank is a link analysis algorithm. It assigns a numerical weight (between 0 and 1) to each node in a directed graph, with the purpose of “measuring” its relative importance within the graph. The sum of PageRanks is 1. It may be applied to any collection of entities with reciprocal quotations and references. The function supports weighted (edge weights) and unweighted graphs. It supports only directed graphs.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="Antiselect" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Antiselect</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    Antiselect returns all columns except those specified in the exclude clause.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    There are cases in which a user wants to retrieve all but a few columns from a table or query. The syntax rules of SELECT allow you to either specify “*” or list the specific columns you want, but you cannot list columns to be excluded.
+                </p>
+                <p>
+                    With the antiselect function, you can select all columns except the one(s) in the EXCLUDE argument clause list. This is useful when simply selecting rows or when doing a join to create a new table.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="Apache Log Parser" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Apache Log Parser</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    This function parses Apache log file content to a schema from a given server access log and extracts multiple columns of structural information, including search engines and search terms. Custom log formats are supported, but if not specified, the default format is the NCSA extended/combined log format.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    The apache_log_parser function parses Apache log files with the following constraints:
+                </p>
+                <ul>
+                    <li>Log files are loaded into a table</li>
+                    <li>One line of the Apache log file is loaded to one row in the table</li>
+                    <li>The content must conform to the supplied log format if a custom log format string is given.</li>
+                    <li>If no custom format string is given via the LOG_FORMAT argument, the function will parse the logs against NCSA extended/combined format defined as:<br>
+                    <p style="font-family:Latin Modern Mono">
+                    "%h %l %u %t \"%r\" %&gt;s %b \"%{Referer}i\" \"%{User-agent}i\""
+                    </p></li>
+                </ul>
+                <p><strong>Background on Apache log configuration</strong></p>
+                <p>
+                    The Apache web server enables users to customize server access logs in terms of both the content and the reporting conditions. For example, the server may be configured to report remote host name, time of each request, and the requested path only when the page fails to open.
+                </p>
+                <p>
+                    The desired log format must be present in the Apache server configuration file, as an argument of these directives:
+                </p>
+                <ul>
+                    <li>LogFormat: is used to define a custom format only.</li>
+                    <li>CustomLog: is used to define a log file under certain custom formats in one step.</li>
+                </ul>
+                <p>
+                    The characteristics of the request itself are logged by placing "%" directives in the format string. At logging time, the directives are substituted with specific values.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="IdentityMatch" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">IdentityMatch</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    This function tries to match enterprise customers with users records provided by external data sources. When matching two users, the function lets you choose the attributes to use in calculating the similarity scores, and then uses a formula to compute the final similarity score.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    Enterprises are able to procure information from external data sources (for example, forums and Twitter) to gather feedback about customer sentiment, assess feedback on a marketing launch, and so on. Unfortunately, it is very difficult to match multiple user IDs to a customer available in the enterprise’s database. Being able to identify comments/feedback by a user is very important.
+                </p>
+                <p>
+                    The matching of attributes can be divided into types of matching:
+                </p>
+                <ul>
+                    <li>Nominal</li>
+                    <li>Fuzzy</li>
+                </ul>
+                <p>
+                    The match logic is to first process the nominal matching, then the fuzzy matching. If the nominal columns are matched (exactly equal), then bypass the fuzzy matching. Otherwise, perform fuzzy matching and only use the fuzzy matching score.
+                </p>
+                <p>
+                    For example, if two users have the same email or mobile phone number, one can say that they are the same user. However, location and profile attributes do not represent users. In this case, weighted matching needs to be used.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="IpGeo" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">IpGeo</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    IpGeo lets you map IP addresses to location information. You can use this information to identify the geographical location of a visitor. This information includes country, region, city, latitude, longitude, ZIP code, and ISP.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    Using IpGeo, you can improve the effectiveness of online applications including: targeted online advertising, content localization, geographic rights management, enhanced analytics, and online security and fraud prevention.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="JSONParser" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">JSONParser</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The JSONParser function is a tool used to extract the element name and text from JSON strings and output them into a flattened relational table.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    On the Internet, most data is exchanged and processed using JSON or XML, and then displayed using HTML. These languages have a great deal in common: they are based on named structures that can be nested, using a Unicode-based representation that is both human-readable and machine-readable.
+                </p>
+                <p>
+                    Each language is optimized for it’s main function:
+                </p>
+                <ul>
+                    <li>HTML for representing web pages</li>
+                    <li>XML for representing document data</li>
+                    <li>JSON for representing programming language structures</li>
+                </ul>
+                <p>
+                    In many applications, programmers work with only one of these formats. In others, programmers work with all three. For traditional programming structures, programming with JSON is significantly easier than programming with XML.
+                </p>
+                <p>
+                    XQuery is the standard query language for XML, and has been implemented in databases, streaming processors, data integration platforms, application integration platforms, XML message routing software, web browser plugins, and other environments. But there is currently no standard query language for JSON. To solve this challenge, Teradata Aster has created the JSONParser SQL-MR function, which takes the JSON string as input and parses it as specified by the function arguments, outputting it as a relational table which can then be queried using SQL.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="Multicase" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Multicase</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    Multi-case extends the capability of the SQL CASE statement by supporting matches to multiple criteria in a single row. The function iterates through the input data set only once and emits matches whenever a match occurs. If multiple matches occur for a given input row, one output row will be emitted for each match. This differs from the behavior of the SQL CASE statement. When SQL CASE finds a match, it emits the result and immediately proceeds to the next row without searching for more matches in the current row.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    The multicase function is useful when you want to have a single row match multiple conditions. In other words, you should use this function when the conditions in your CASE statement do not form a mutually exclusive set.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="MurmurHash" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">MumurHash</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The MurmurHash function is a tool that computes the hash value of the input columns.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    MurmurHash is a non-cryptographic hash function suitable for general hash-based lookup. The function computes the murmurhash value of each cell in the input columns.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="OutlierFilter" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">OutlierFilter</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    This function removes outliers from their data set. The input data is expected to have as many as millions of variables listed as 'attribute_value' pairs. This function provides several different methods for defining outliers: percentile, Tukey’s method, and Carling’s modification.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="PSTParserAFS" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">PSTParserAFS</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    PSTParserAFS is a tool for parsing Personal Storage Table (PST) files which store email in Microsoft software such as Microsoft Outlook and Microsoft Exchange Client.
+                </p>
+                <p>
+                    PSTParserAFS can parse PST email data directly from Aster File Store (AFS) without the need to provide an intermediate table for specifying file paths.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    You can use PSTParserAFS to analyze email content for customer attrition analysis, customer service analysis, and spam detection. You can also use PSTParserAFS to extract information from PST files and pass it as an input to other SQL-MR analytic functions such as text parser, sentiment analysis, and classification.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="Pack" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Pack</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The Pack function takes a number of input columns and transforms them into a single packed column. The packed column is composed of a number of virtual columns, with each virtual column representing an input column. In the packed column, a COLUMN_DELIMITER string separates each virtual column value from the next. By default, each virtual column value is labeled with its column name, but you can turn off this labeling.
+                </p>
+                <p>
+                    Aster Database also provides an Unpack function to explode a single packed column into a number of columns. 
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="Pivot" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Pivot</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The pivot function is used to pivot data stored in rows into columns.
+                </p>
+                <p>
+                    The function takes as input a table of data to be pivoted, and it automatically constructs the output schema based on the arguments passed to the function. NULL values are handled automatically by the function, as shown in the examples below.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="Unpack" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Unpack</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The Unpack function takes data from a single packed column and expands it to multiple columns. Each packed column is composed of a number of virtual columns. In the packed column, a COLUMN_DELIMITER string separates each virtual column from the next.
+                </p>
+                <p>
+                    This function is complementary to Aster Database’s Pack function, but can be used on any packed column that represents its packed columns in a reasonably regular way. 
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="Unpivot" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">Unpivot</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    Unpivot is a SQL-MR function to convert columns into rows.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    This is a “utilities” function that is the inverse of the pivot SQL-MR function.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="XMLParser" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">XMLParser</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The XMLParser function is a general-purpose tool for extracting information from XML documents. This function extracts element names, attribute values, and text.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    XML data is semi-structured and does not conform with the formal structure of data in relational database tables. XML data is hierarchical, which is not the case in relational database tables. As a result, XML data cannot be searched and analyzed using SQL queries.
+                </p>
+                <p>
+                    To address this issue, you can use the XMLParser function which lets you extract the relevant elements from input XML data and relationize them. The output of this function is a relational table, which you can query using SQL. The XMLParser function lets you specify the schema of the output table.
+                </p>
+                <p>
+                    Because not all kinds of XML data can be converted into a table, the XMLParser function constrains the relationships in the extracted data to be parent/child or sibling relationships. The XMLParser function lets you specify these constraints.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="XMLRelation" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">XMLRelation</h2>
+                <div class="text_scroll">
+                <h4>Summary</h4>
+                <p>
+                    The XMLRelation function is a tool for extracting most XML content (element name, text and attribute values) and structural information from XML documents into a relational table.
+                </p>
+                <h4>Background</h4>
+                <p>
+                    The XMLRelation function is a general tool for flattening XML documents into a relational table for multiple uses. It extracts most XML content and maintains multi-level paths for the XML elements from the input XML documents. It then flattens the data into a relational table. After performing this transformation, you can query the data by accessing the output table through SQL.
+                </p>
+                <p>
+                    The inputs to XMLRelation function are the XML data, the parameter that specifies the maximum depth in the parsing process, and the parameters that specify the output data. The output of the XMLRelation function is a flattened table containing the data from the XML documents.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="CfilterViz" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">CfilterViz</h2>
+                <div class="text_scroll">
+                <h4>Summary and Background</h4>
+                <p>
+                    CfilterViz is a multiple-input partition SQL-MR function that visualizes the output of the cfilter SQL-MR function 
+                </p>
+                <p>
+                    This function uses the Sigma visualization module to generate Sigma graphs. Additionally, this function lets you specify these types: GEXF, Graphviz.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
             <div id="NpathViz" style="display:none">
-                <script src="https://gist.github.com/PMeinshausen/ffeac15ed5f289a8d387.js"></script>
+                <h2 class="text-center">NpathViz</h2>
+                <div class="text_scroll">
+                <h4>Summary and Background</h4>
+                <p>
+                    NpathViz is a SQL-MR function that visualizes the output of the Teradata Aster nPath SQL-MR function.
+                </p>
+                <p>
+                    NpathViz generates these visualization types:
+                </p>
+                <ul>
+                    <li>Sankey</li>
+                    <li>Tree</li>
+                    <li>Sigma</li>
+                    <li>Chord</li>
+                    <li>GEXF</li>
+                    <li>Graphviz</li>
+                </ul>
+                <p><strong>Sankey</strong></p>
+                <p>
+                    Sankey diagrams are special types of flow diagrams that let you visualize flow quantity, which is represented by the width of the flow lines. You can view Sankey visualizations using Aster Lens.
+                </p>
+                <p><strong>Tree</strong></p>
+                <p>
+                    Tree diagrams let you visualize hierarchy and flow quantity. The width of the node connectors in the diagram represent the flow quantity. You can view Tree visualizations using Aster Lens.
+                </p>
+                <p><strong>Sigma</strong></p>
+                <p>
+                    Lets you generate graphs or network diagrams. A Sigma diagram shows you the vertices and edges of a graph. You can view Sigma visualizations using Aster Lens.
+                </p>
+                <p><strong>Chord</strong></p>
+                <p>
+                    Chord diagrams let you explore relationships between entity groups. You can view Chord visualizations using Aster Lens.
+                </p>
+                <p>
+                    Chord diagrams are best when the number of nodes is small (for example, less than 50), and you want to show direction. The nodes are sized by the chord visualization engine to match the sum of the chord sizes. In this sense, the nodes in the chord and graph visualizations are sized in a similar fashion. Chord visualizations with more than 50 nodes might not display.
+                </p>
+                <p><strong>GEXF</strong></p>
+                <p>
+                    You can choose to generate GEXF graphs. GEXF graphs are rendered using Gephi, an open- source network analysis and visualization software package. To view GEXF visualizations, download them using Aster Lens, then open them on your system.
+                </p>
+                <p><strong>Graphviz</strong></p>
+                <p>
+                    You can choose to generate Graphviz graphs. Graphviz is an open-source visualization software. To view Graphviz visualizations, download them using Aster Lens, then open them on your system.
+                </p>
+                <h4>Usage</h4>
+                </div>
             </div>
         </div>
     </div>
