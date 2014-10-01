@@ -40,7 +40,6 @@ function showAndClearField(frm){
   if (frm.term.value == "")
     alert("You forgot to enter a term!")
   else
-    console.log(frm.term.value);
     updateData(frm.term.value);
   frm.term.value = ""
 };
@@ -88,7 +87,6 @@ function updateData(frm){
     });
 
     used_data = headline_terms.filter(function(d){ return d.term == frm; });
-    console.log(used_data[0].values.map(function(d){ return d.year; }));
 
     var xAxis = d3.svg.axis()
       .scale(x)
@@ -161,7 +159,6 @@ function createChart(frm){
     });
 
     used_data = headline_terms.filter(function(d){ return d.term == frm; });
-    console.log(used_data[0].values.map(function(d){ return d.year; }));
 
     var xAxis = d3.svg.axis()
       .scale(x)
