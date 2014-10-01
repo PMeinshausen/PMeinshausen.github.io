@@ -35,7 +35,11 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
 
 
 d3.csv("transposed_terms.csv", function(error, data){
-  console.log(data);
+  var nested_data = d3.nest()
+    .key(function(d){ return d.headline_year; })
+    .entries(data);
+
+  console.log(nested_data);
 
   var mydata = data;
 });
