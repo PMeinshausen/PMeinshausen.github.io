@@ -43,9 +43,10 @@ d3.csv("terms.csv", function(error, data){
   var nested_data = d3.nest()
     .key(function(d){ return d.term; })
     .entries(data);
-    
-  console.log(data);
 
+  console.log(nested_data);
+
+  var mynesteddata = nested_data;
   var mydata = data;
 });
 
