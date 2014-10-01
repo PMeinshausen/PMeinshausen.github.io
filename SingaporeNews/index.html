@@ -25,9 +25,24 @@
 </style>
 
 <body>
+
+  <form name="test">
+    <p>Enter a term from the headlines and press the button. <input type="text" name="term">
+      <input type="button" value="Search" onClick="showAndClearField(this.form)">
+    </p>
+  </form>
+  
 <script src="http://d3js.org/d3.v3.js"></script>
 
 <script>
+
+function showAndClearField(frm){
+  if (frm.term.value == "")
+    alert("You forgot to enter a term!")
+  else
+    console.log(frm.term.value)
+  frm.term.value = ""
+};
 
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
   width = 960 - margin.left - margin.right,
@@ -145,5 +160,6 @@ d3.csv("transposed_terms.csv", function(error, data){
 });
 
 </script>
+
 
 </body>
