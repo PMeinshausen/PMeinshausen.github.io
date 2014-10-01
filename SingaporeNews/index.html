@@ -28,7 +28,7 @@
 
   <form name="test">
     <p>Enter a term from the headlines and press the button. <input type="text" name="term">
-      <input type="button" value="Search" onClick="write_Console(this.form)">
+      <input type="button" value="Search" id="search_term">
     </p>
   </form>
 
@@ -160,6 +160,10 @@ d3.csv("transposed_terms.csv", function(error, data){
   function write_Console(frm){
     console.log(frm.term.value);
   };
+
+  d3.select('#search_term').on('click', function(this.form){
+    console.log(this.form);
+  });
 
 });
 
