@@ -40,7 +40,10 @@ function transpose(a){
 };
 
 d3.csv("terms.csv", function(error, data){
-  
+  var nested_data = d3.nest()
+    .key(function(d){ return d.term; })
+    .entries(data);
+    
   console.log(data);
 
   var mydata = data;
