@@ -81,7 +81,7 @@ d3.csv("transposed_terms.csv", function(error, data){
                 return v.count; });
               });
 
-  x.domain(d3.extent(headline_terms[0].values), function(d){ return d.year; }));
+  x.domain(d3.extent(headline_terms[0].values), function(d){ return d.year; });
 
   y.domain([minY, maxY]);
 
