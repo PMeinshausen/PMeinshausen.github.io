@@ -43,19 +43,6 @@ var color = d3.scale.category20();
 
 d3.csv("transposed_terms.csv", function(error, data){
 
-  var xAxis = d3.svg.axis()
-    .scale(x)
-    .orient("bottom")
-    .ticks(55);
-
-  var yAxis = d3.svg.axis()
-    .scale(y)
-    .orient('left');
-
-  var line = d3.svg.line()
-    .x(function(d){ return x(d.year); })
-    .y(function(d){ return y(d.count); });
-  
   color.domain(d3.keys(
     data[0]).filter(function(key){ return key !== 'headline_year'; }
     )
@@ -71,7 +58,20 @@ d3.csv("transposed_terms.csv", function(error, data){
   });
 
   used_data = headline_terms.filter(function(d){ return d.term == 'bomb'; });
-  console.log(used_data[0].values);
+  console.log(used_data[0].values.map(function(d){ return d.year; }));
+
+  var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .ticks(used_data[0].values.map(function(d){ return d.year; }));
+
+  var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient('left');
+
+  var line = d3.svg.line()
+    .x(function(d){ return x(d.year); })
+    .y(function(d){ return y(d.count); });
 
   var minY = d3.min(used_data, function(c){ return d3.min(c.values, function(v){
                 return v.count; });
