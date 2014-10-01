@@ -71,7 +71,7 @@ d3.csv("transposed_terms.csv", function(error, data){
   });
 
   used_data = headline_terms.filter(function(d){ return d.term == 'bomb'; });
-  console.log(used_data);
+  console.log(used_data.values);
 
   var minY = d3.min(used_data, function(c){ return d3.min(c.values, function(v){
                 return v.count; });
@@ -81,7 +81,7 @@ d3.csv("transposed_terms.csv", function(error, data){
                 return v.count; });
               });
 
-  x.domain(d3.extent(headline_terms[0].values), function(d){ return d.year; });
+  x.domain(used_data.values.map(function(d){ return d.year; }));
 
   y.domain([minY, maxY]);
 
