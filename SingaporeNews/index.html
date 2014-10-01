@@ -43,14 +43,14 @@ d3.csv("transposed_terms.csv", function(error, data){
   console.log(data[0]);
 
   color.domain(d3.keys(
-    nested_data[0]).filter(function(key){ return key == 'bomb'; }
+    data[0]).filter(function(key){ return key == 'bomb'; }
     )
   );
 
   var headline_terms = color.domain().map(function(term){
       return {
           term: term,
-          values: nested_data.map(function(d){
+          values: data.map(function(d){
               return {year: d.headline_year, term: +d[term]};
           })
       };
