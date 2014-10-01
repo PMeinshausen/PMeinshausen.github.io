@@ -114,8 +114,11 @@ d3.csv("transposed_terms.csv", function(error, data){
       .style('text-anchor', 'end')
       .text('Count');
 
-  svg.append('text')
-      .attr('class', 'Title')
+  var term_label = svg.selectAll('term_label')
+      .data(used_data)
+      .enter()
+    .append('text')
+      .attr('class', 'term_label')
       .attr("x", width / 2)
       .attr("y", -5)
       .style("text-anchor", "middle")
@@ -123,8 +126,7 @@ d3.csv("transposed_terms.csv", function(error, data){
       .style("fill", "#53565A")
       .transition()
       .duration(750)
-      .data(used_data)
-      .text(function(d){ return d.term});
+      .text(function(d){ return d.term; });
 
   var terms = svg.append('g')
             .attr('class', 'terms');
