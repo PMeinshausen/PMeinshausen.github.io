@@ -30,33 +30,28 @@
 <script>
 
 var margin = {top: 20, right: 20, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+  width = 960 - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
 
 var color = d3.scale.category20();
 
 d3.csv("transposed_terms.csv", function(error, data){
-  var nested_data = d3.nest()
-    .key(function(d){ return d.headline_year; })
-    .entries(data);
-  console.log(nested_data[0]);
-  console.log(data[0]);
-
+  
   color.domain(d3.keys(
     data[0]).filter(function(key){ return key !== 'headline_year'; }
     )
   );
 
   var headline_terms = color.domain().map(function(term){
-      return {
-          term: term,
-          values: data.map(function(d){
-              return {year: d.headline_year, term: +d[term]};
-          })
-      };
+    return {
+      term: term,
+      values: data.map(function(d){
+        return {year: d.headline_year, count: +d[term]};
+      })
+    };
   });
 
-  console.log(headline_terms);
+  console.log(headline_terms.filter(function(d){ return d == 'bomb'; }));
 
   var mydata = data;
 });
