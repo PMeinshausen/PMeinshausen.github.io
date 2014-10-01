@@ -28,10 +28,10 @@
 
   <form name="test">
     <p>Enter a term from the headlines and press the button. <input type="text" name="term">
-      <input type="button" value="Search" onClick="showAndClearField(this.form)">
+      <input type="button" value="Search" onClick="write_Console(this.form)">
     </p>
   </form>
-  
+
 <script src="http://d3js.org/d3.v3.js"></script>
 
 <script>
@@ -156,6 +156,10 @@ d3.csv("transposed_terms.csv", function(error, data){
 
   termsLines
     .attr('d', function(d){ return line(d.values); });
+
+  function write_Console(frm){
+    console.log(frm.term.value);
+  };
 
 });
 
