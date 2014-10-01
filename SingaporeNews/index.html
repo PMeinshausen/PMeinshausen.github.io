@@ -51,7 +51,7 @@ d3.csv("transposed_terms.csv", function(error, data){
     };
   });
 
-  console.log(headline_terms.filter(function(d){ return d == 'bomb'; }));
+  console.log(headline_terms.filter(function(d){ return d.term == 'bomb'; }));
 
   var mydata = data;
 });
