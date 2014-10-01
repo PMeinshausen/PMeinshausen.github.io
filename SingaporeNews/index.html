@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<style>
+  body {
+    font: 10px sans-serif;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .x.axis path {
+    display: none;
+  }
+
+  .line {
+    fill: none;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+  }
+</style>
+
+<body>
+<script src="http://d3js.org/d3.v3.js"></script>
+
+<script>
+
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+d3.csv("terms.csv", function(error, data){
+  console.log(data);
+
+});
+
+</script>
+
+</body>
