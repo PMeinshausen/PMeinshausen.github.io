@@ -41,7 +41,9 @@ function transpose(a){
 
 d3.csv("terms.csv", function(error, data){
   transpose(data);
-  console.log(data);
+  console.log(Object.keys(data));
+
+  var mydata = data;
 });
 
 </script>
