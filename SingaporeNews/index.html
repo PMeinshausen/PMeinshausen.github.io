@@ -143,7 +143,7 @@ function updateData(frm){
   });
 };
 
-function createChart(term){
+function createChart(frm){
   d3.csv("transposed_terms.csv", function(error, data){
 
     color.domain(d3.keys(
