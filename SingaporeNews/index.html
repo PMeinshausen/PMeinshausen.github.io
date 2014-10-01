@@ -39,7 +39,21 @@ d3.csv("transposed_terms.csv", function(error, data){
     .key(function(d){ return d.headline_year; })
     .entries(data);
 
-  console.log(nested_data);
+  color.domain(d3.keys(
+    nested_data[0]).filter(function(key){ return key == 'bomb' || key == 'blast'; }
+    )
+  );
+
+  var headline_terms = color.domain().map(function(term){
+      return {
+          term: term,
+          values: data.map(function(d){
+              return {year: d.headline_year, term: +d[term]};
+          })
+      };
+  });
+
+  console.log(headline_terms);
 
   var mydata = data;
 });
