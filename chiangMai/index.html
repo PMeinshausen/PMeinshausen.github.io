@@ -14,7 +14,11 @@
 
             years = {};
             for (i=0; i<data.length; i++){
-                years[data[i].date] += 1
+                if !(data[i].date in years){
+                    years[data[i].date] = 1;
+                } else {
+                    years[data[i].date] = years[data[i].date] + 1
+                }
             }
             console.log(years);
         })
