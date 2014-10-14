@@ -10,6 +10,29 @@
 <body>
 
     <script>
+        var margin = {top: 20, right: 20, bottom: 70, left: 40},
+            width = 600 - margin.left - margin.right,
+            height = 300 - margin.top - margin.bottom;
+
+        var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+
+        var y = d3.scale.linear().range([height, 0]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient('bottom');
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient('left');
+
+        var svg = d3.select('body').append('svg')
+            .attr('width', width + margin.left + margin.right)
+            .attr('height', height + margin.top + margin.bottom)
+          .append('g')
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+
         d3.csv("chiangMai_data.csv", function(error, data){
 
             years = {};
@@ -20,7 +43,16 @@
                     years[data[i].date] = years[data[i].date] + 1
                 }
             }
-            console.log(years);
+
+            bar_year = [];
+            bar_value = [];
+            for (var key in years){
+                bar_year.push(key)
+                bar_value.push(years[key])
+            }
+            
+            console.log(bar_year);
+            console.log(bar_value);
         })
 
     </script>
