@@ -50,9 +50,11 @@
                 bar_year.push(key)
                 bar_value.push(years[key])
             }
+            bar_data = {};
+            bar_data['year'] = bar_year;
+            bar_data['value'] = bar_value;
             
-            console.log(bar_year);
-            console.log(bar_value);
+            console.log(bar_data);
         })
 
     </script>
