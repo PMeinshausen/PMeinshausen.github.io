@@ -98,7 +98,11 @@
                     })
                 .on('mouseout', function(d){
                     d3.select(this).style('fill', 'orange')
-                    });
+                    })
+                .on('click', function(d){
+                    console.log('clicked');
+                    d3.select('div#table').html(d.year);
+                });
 
             svg.selectAll('bar')
                 .on('mouseover', function(d){
