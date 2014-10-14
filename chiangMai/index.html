@@ -46,12 +46,10 @@
 
             bar_data = [];
             for (var key in years){
-                if (key !== ""){
-                    bar_dict = {};
-                    bar_dict['year'] = key;
-                    bar_dict['value'] = years[key];
-                    bar_data.push(bar_dict);
-                }
+                bar_dict = {};
+                bar_dict['year'] = key;
+                bar_dict['value'] = years[key];
+                bar_data.push(bar_dict);
             }
             
             x.domain(bar_data.map(function(d){ return d.year; }));
