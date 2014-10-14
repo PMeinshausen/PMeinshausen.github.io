@@ -52,8 +52,38 @@
                 bar_data.push(bar_dict);
             }
             
-            console.log(bar_data);
-        })
+            x.domain(bar_data.map(function(d){ return d.year; }));
+            y.domain([0, d3.max(bar_data, function(d){ return d.value; })]);
+
+            svg.append('g')
+                .attr('class', 'x axis')
+                .attr('transform', 'translate(0,' + height + ')')
+                .call(xAxis)
+              .selectAll('text')
+                .style('text-anchor', 'end')
+                .attr('dx', '-.8em')
+                .attr('dy', '-.55em')
+                .attr('transform', 'rotate(-90)');
+
+            svg.append('g')
+                .attr('class', 'y axis')
+                .call(yAxis)
+              .append('text')
+                .attr('transform', 'rotate(-90)')
+                .attr('y', 6)
+                .attr('dy', '.71em')
+                .style('text-anchor', 'end')
+                .text('Value');
+
+            svg.selectAll('bar')
+                .data(bar_data)
+              .enter().append('rect')
+                .style('fill', 'orange')
+                .attr('x', function(d){ return x(d.year); })
+                .attr('width', x.rangeBand())
+                .attr('y', function(d){ return y(d.value); })
+                .attr('height', function(d){ return height - y(d.value); });
+        });
 
     </script>
 
