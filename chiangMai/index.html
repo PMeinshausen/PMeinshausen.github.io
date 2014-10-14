@@ -123,7 +123,7 @@
                     .enter().append('g')
                     .html(function(d){
                         for (i=0; i<data.length; i++){
-                            if (data[i].date == d.year){
+                            if (data[i].date.toString() == d.year){
                                 console.log(data[i].date);
                                 return data[i].found_title;
                             }
