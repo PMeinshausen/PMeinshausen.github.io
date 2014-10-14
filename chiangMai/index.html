@@ -101,7 +101,7 @@
                     })
                 .on('click', function(d){
                     console.log('clicked');
-                    d3.select('div#table').html(d.year);
+                    create_table(d);
                 });
 
             svg.selectAll('bar')
@@ -121,8 +121,13 @@
                     .data(data)
                     .enter().append('g')
                     .text(function(d){
+                        for (i=0; i<data.length; i++){
+                            if (data[i].date == d.year){
+                                return data[i].found_title;
+                            }
+                        }
 
-                    })
+                    });
             }
         });
 
