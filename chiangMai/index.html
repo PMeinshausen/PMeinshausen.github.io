@@ -61,7 +61,8 @@
                 .call(xAxis)
               .selectAll('text')
                 .style('text-anchor', 'end')
-                .attr('x', x)
+                .attr('x', x+1)
+                .attr('y', height)
                 .attr('dx', '-.8em')
                 .attr('dy', '-.55em')
                 .attr('transform', 'rotate(-90)');
