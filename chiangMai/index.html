@@ -108,7 +108,8 @@
                     d3.select(this).style('fill', 'orange')
                     })
                 .on('click', function(d){
-                    d3.select('div#table').html(d.year)
+                    console.log(d.year);
+                    d3.select('div#table').html(d.year);
                 });
         });
 
