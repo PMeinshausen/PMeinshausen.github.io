@@ -125,14 +125,14 @@
                 console.log(data[0].date);
                 console.log(d.year);
 
-                data.filter(function(el){
+                data = data.filter(function(el){
                     return el.date == d.year;
                 });
                 svgTable.selectAll('text')
                     .data(data)
                     .enter().append('g')
                     .attr('y', function(d, i){ return i*10 })
-                    .text(function(d){ return d.found_title; });
+                    .html(function(d){ return d.found_title; });
             }
         });
 
