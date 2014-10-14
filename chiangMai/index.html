@@ -117,10 +117,11 @@
                 });
 
             function create_table(d){
+                console.log(d);
                 d3.select('div#table').selectAll('text')
                     .data(data)
                     .enter().append('g')
-                    .text(function(d){
+                    .html(function(d){
                         for (i=0; i<data.length; i++){
                             if (data[i].date == d.year){
                                 return data[i].found_title;
