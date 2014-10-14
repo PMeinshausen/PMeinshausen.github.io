@@ -124,12 +124,15 @@
             function create_table(d){
                 console.log(data[0].date);
                 console.log(d.year);
+
+                data.filter(function(el){
+                    return el.date == d.year;
+                });
                 svgTable.selectAll('text')
                     .data(data)
-                    .filter(function(e){ return e.date == d.year})
                     .enter().append('g')
                     .attr('y', function(d, i){ return i*10 })
-                    .html(function(d){ return d.found_title; });
+                    .text(function(d){ return d.found_title; });
             }
         });
 
