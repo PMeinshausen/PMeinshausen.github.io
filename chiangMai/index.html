@@ -46,10 +46,12 @@
 
             bar_data = [];
             for (var key in years){
-                bar_dict = {};
-                bar_dict['year'] = key;
-                bar_dict['value'] = years[key];
-                bar_data.push(bar_dict);
+                if (key != ""){
+                    bar_dict = {};
+                    bar_dict['year'] = key;
+                    bar_dict['value'] = years[key];
+                    bar_data.push(bar_dict);
+                }
             }
             
             x.domain(bar_data.map(function(d){ return d.year; }));
@@ -60,8 +62,10 @@
                 .attr('transform', 'translate(0,' + height + ')')
                 .call(xAxis)
               .selectAll('text')
-                .style('text-anchor', 'end')
-                .attr('transform', 'rotate(-90)');
+                .style("text-anchor", "end")
+                .attr("dx", "-.8em")
+                .attr("dy", "-.55em")
+                .attr("transform", "rotate(-90)" );
 
             svg.append('g')
                 .attr('class', 'y axis')
