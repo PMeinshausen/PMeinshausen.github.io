@@ -117,7 +117,7 @@
                 });
 
             function create_table(d){
-                console.log(data[0].date);
+                console.log(data[0].date.toString());
                 d3.select('div#table').selectAll('text')
                     .data(data)
                     .enter().append('g')
