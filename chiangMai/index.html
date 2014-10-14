@@ -60,7 +60,9 @@
                 .attr('transform', 'translate(0,' + height + ')')
                 .call(xAxis)
               .selectAll('text')
-                .attr('transform', 'rotate(-90)');
+                .style('text-anchor', 'end')
+                .attr('transform', 'rotate(-90)')
+                .attr('transform', 'translate(' + xScale.rangeRoundBands() + ', 0)');
 
             svg.append('g')
                 .attr('class', 'y axis')
