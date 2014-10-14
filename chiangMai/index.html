@@ -16,7 +16,12 @@
 <body>
 
     <div id="chart"></div>
-    <div id="table"></div>
+    <div id="table">
+        <table id="titleTable">
+            <thead></thead>
+            <tbody></tbody>
+        </table>
+    </div>
 
     <script>
         var margin = {top: 20, right: 20, bottom: 70, left: 40},
@@ -128,12 +133,14 @@
                 data = data.filter(function(el){
                     return el.date == d.year;
                 });
-                svgTable.selectAll('text')
+                var tr = d3.select('div#table').selectAll('tr')
                     .data(data)
-                    .enter().append('g')
-                    .attr('y', function(d, i){ return i*10 })
-                    .attr('x', 10)
-                    .html(function(d){ return d.found_title; });
+                    .enter().append('tr')
+
+                var td = tr.selectAll('td')
+                    .data(function(d){ return d.found_title })
+                    .enter().append('td')
+                    .html(function(d){ return d });
             }
         });
 
