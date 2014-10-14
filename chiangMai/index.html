@@ -14,7 +14,7 @@
             width = 600 - margin.left - margin.right,
             height = 300 - margin.top - margin.bottom;
 
-        var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+        var x = d3.scale.ordinal().rangeRoundBands([0, width], .1);
 
         var y = d3.scale.linear().range([height, 0]);
 
@@ -61,8 +61,7 @@
                 .call(xAxis)
               .selectAll('text')
                 .style('text-anchor', 'end')
-                .attr('transform', 'rotate(-90)')
-                .attr('transform', 'translate(' + xScale.rangeRoundBands() + ', 0)');
+                .attr('transform', 'rotate(-90)');
 
             svg.append('g')
                 .attr('class', 'y axis')
