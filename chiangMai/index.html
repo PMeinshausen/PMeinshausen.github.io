@@ -60,7 +60,8 @@
                 .attr('transform', 'translate(0,' + height + ')')
                 .call(xAxis)
               .selectAll('text')
-                .style('text-anchor', 'middle')
+                .style('text-anchor', 'end')
+                .attr('x', x)
                 .attr('dx', '-.8em')
                 .attr('dy', '-.55em')
                 .attr('transform', 'rotate(-90)');
