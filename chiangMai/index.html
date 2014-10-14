@@ -127,8 +127,6 @@
                 });
 
             function create_table(d){
-                console.log(data[0].date);
-                console.log(d.year);
 
                 data = data.filter(function(el){
                     return el.date == d.year;
@@ -136,12 +134,12 @@
 
                 svg.selectAll('.titles')
                     .data(data)
-                    .enter().append('g')
+                    .enter().append('text')
                     .attr('class', 'titles')
                     .attr('x', 20)
                     .attr('y', function(d,i){ return i*10 })
                     .text(function(e){ return e.found_title });
-                    
+
                 var tr = d3.select('div#table').selectAll('tr')
                     .data(data)
                     .enter().append('tr')
