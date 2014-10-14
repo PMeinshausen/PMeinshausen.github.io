@@ -134,7 +134,9 @@
                 var labels = svg.selectAll('.titles')
                     .data(data.filter(function(el){
                         return el.date == d.year;
-                    }))
+                    }));
+
+                labels
                     .enter().append('text')
                     .attr('class', 'titles')
                     .attr('x', 20)
