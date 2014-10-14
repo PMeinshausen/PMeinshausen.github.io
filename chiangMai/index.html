@@ -11,7 +11,12 @@
 
     <script>
         d3.csv("chiangMai_data.csv", function(error, data){
-            console.log(data);
+
+            years = {};
+            for (i=0; i<data.length; i++){
+                years[data[i].date] += 1
+            }
+            console.log(years);
         })
 
     </script>
