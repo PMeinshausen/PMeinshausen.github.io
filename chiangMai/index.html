@@ -92,7 +92,13 @@
                 .attr('x', function(d){ return x(d.year); })
                 .attr('width', x.rangeBand())
                 .attr('y', function(d){ return y(d.value); })
-                .attr('height', function(d){ return height - y(d.value); });
+                .attr('height', function(d){ return height - y(d.value); })
+                .on('mouseover', function(d){
+                    d3.select(this).style('fill', 'red');
+                    })
+                .on('mouseout', function(d){
+                    d3.select(this).style('fill', 'orange')
+                    });
 
             svg.selectAll('bar')
                 .on('mouseover', function(d){
