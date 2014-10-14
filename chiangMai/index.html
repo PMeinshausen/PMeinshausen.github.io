@@ -35,6 +35,7 @@
 
         d3.csv("chiangMai_data.csv", function(error, data){
 
+            console.log(data);
             years = {};
             for (i=0; i<data.length; i++){
                 if (!(data[i].date in years)){
