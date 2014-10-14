@@ -61,7 +61,8 @@
                 .call(xAxis)
               .selectAll('text')
                 .style('text-anchor', 'end')
-                .attr('dx', '-.2em')
+                .attr('x', function(d){ return x(d.year); })
+                .attr('dx', '-.8em')
                 .attr('dy', '-.55em')
                 .attr('transform', 'rotate(-90)');
 
