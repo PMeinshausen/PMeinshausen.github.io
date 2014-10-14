@@ -132,6 +132,7 @@
                     .data(data)
                     .enter().append('g')
                     .attr('y', function(d, i){ return i*10 })
+                    .attr('x', 10)
                     .html(function(d){ return d.found_title; });
             }
         });
