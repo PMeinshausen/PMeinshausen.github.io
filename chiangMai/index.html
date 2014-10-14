@@ -131,7 +131,7 @@
                 //svg.selectAll('.titles').remove();
                 console.log(data);
 
-                svg.selectAll('.titles')
+                var labels = svg.selectAll('.titles')
                     .data(data.filter(function(el){
                         return el.date == d.year;
                     }))
@@ -140,6 +140,17 @@
                     .attr('x', 20)
                     .attr('y', function(d,i){ return i*10 })
                     .text(function(e){ return e.found_title });
+
+                labels
+                    .data(data.filter(function(el){
+                        return el.date == d.year;
+                    }))
+                    .transition()
+                    .attr('x', 20)
+                    .attr('y', function(d,i){ return i*10 })
+                    .text(function(e){ return e.found_title });
+
+                labels.exit().remove();
 
                 var tr = d3.select('div#table').selectAll('tr')
                     .data(data)
