@@ -122,6 +122,7 @@
                     .data(data)
                     .enter().append('g')
                     .filter(function(e){ return e.date == d.year})
+                    .attr('y', function(d, i){ return i*10 })
                     .html(function(d){ return d.found_title; });
             }
         });
