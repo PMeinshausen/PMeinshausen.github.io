@@ -55,8 +55,8 @@
           shape-rendering: crispEdges;
         }
 
-        .chart_bar {
-            fill: #EBC51C;
+        rect {
+            fill: #E35604;
         }
 
     </style>
@@ -158,7 +158,7 @@
                     d3.select(this).style('fill', '#D80913');
                     })
                 .on('mouseout', function(d){
-                    d3.select(this).style('fill', '#E35604')
+                    d3.select(this).style('fill', '#EBC51C')
                     })
                 .on('click', function(d){
                     create_table(d);
