@@ -196,10 +196,9 @@
             .attr('width', graph_width)
             .attr('height', graph_height);
 
+        function update(d){
         d3.json('chiangGraph.json', function(error, json){
             
-            function update(d){
-
                 jsonfile = {};
                 nodes = [];
                 links = [];
@@ -261,12 +260,10 @@
 
                 });
                     
-                };
-
-            update('today');
-
 
         });
+
+        };
 
     </script>
 
