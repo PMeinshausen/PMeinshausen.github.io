@@ -157,16 +157,10 @@
 
                 console.log(d.year);
 
-                var title = svgTable.select('.title')
-
-                    .append('text')
+                svgTable.append('text')
                     .attr('class', 'title')
                     .attr('x', 20)
                     .attr('y', 10)
-                    .text(d.year);
-
-                title
-                    .transition()
                     .text(d.year);
 
                 var labels = svgTable.selectAll('.titles')
