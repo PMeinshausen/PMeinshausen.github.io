@@ -179,6 +179,12 @@
                     .attr('x', 20)
                     .attr('y', function(d,i){ return (i*15)+10 })
                     .text(function(e){ return e.found_title })
+                    .on('mouseover', function(d){
+                    d3.select(this).style('fill', 'blue').style('text-decoration', 'underline');
+                    })
+                    .on('mouseout', function(d){
+                    d3.select(this).style('fill', 'black').style('text-decoration', none);
+                    })
                     .on('click', function(e){ return OpenInNewTab(e.link) });
 
                 labels
@@ -189,7 +195,13 @@
                     .attr('x', 20)
                     .attr('y', function(d,i){ return (i*15)+10 })
                     .text(function(e){ return e.found_title })
-                    .on('click', function(e){ return OpenInNewTab(e.link) });;
+                    .on('mouseover', function(d){
+                    d3.select(this).style('fill', 'blue').style('text-decoration', 'underline');
+                    })
+                    .on('mouseout', function(d){
+                    d3.select(this).style('fill', 'black').style('text-decoration', none);
+                    })
+                    .on('click', function(e){ return OpenInNewTab(e.link); });
 
                 labels.exit().remove();
 
