@@ -8,11 +8,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script>
-        var book_terms;
+        var book_terms = [];
         $(document).ready(function(){
             $.getJSON('chiangGraph.json', function(response){
-                console.log(response);
-                book_terms = Object.keys(response);
+                for (i=0; i<Object.keys(response).length; i++){
+                    book_terms.push(Object.keys(response)[i]);
+                }
             });
         });
         $(function() {
