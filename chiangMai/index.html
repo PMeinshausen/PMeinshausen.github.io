@@ -56,8 +56,8 @@
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
         var svgTable = d3.select('div#table').append('svg')
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
+            .attr('width', width/2 + margin.left + margin.right)
+            .attr('height', height/2 + margin.top + margin.bottom)
           .append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
@@ -154,7 +154,7 @@
 
         /*******************************GRAPH*********************************/
         var graph_width = 400,
-            graph_height = 200;
+            graph_height = 400;
 
         var force = d3.layout.force()
             .charge(-120)
