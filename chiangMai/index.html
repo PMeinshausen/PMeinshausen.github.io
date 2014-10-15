@@ -9,6 +9,15 @@
         body {
             font: 10px sans-serif;
         }
+        .node {
+          stroke: #fff;
+          stroke-width: 1.5px;
+        }
+
+        .link {
+          stroke: #999;
+          stroke-opacity: .6;
+        }
     </style>
 
 </head>
@@ -175,6 +184,7 @@
             }
             jsonfile['nodes'] = nodes;
             jsonfile['links'] = links;
+            console.log(jsonfile);
             
             force
                 .nodes(jsonfile.nodes)
