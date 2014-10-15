@@ -22,6 +22,10 @@
           font: 10px sans-serif;
           pointer-events: none;
         }
+        .text_scroll {
+            max-height:500px;
+            overflow-y:scroll;
+        }
     </style>
 
 </head>
@@ -29,7 +33,7 @@
 <body>
 
     <div id="chart"></div>
-    <div id="table"></div>
+    <div class='text_scroll' id="table"></div>
     <div id="graph"></div>
 
     <script>
@@ -56,7 +60,7 @@
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
         var svgTable = d3.select('div#table').append('svg')
-            .attr('width', width/2 + margin.left + margin.right)
+            .attr('width', width + margin.left + margin.right)
             .attr('height', height/2 + margin.top + margin.bottom)
           .append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
