@@ -54,7 +54,11 @@
           stroke: #D80913;
           shape-rendering: crispEdges;
         }
-        
+
+        rect {
+            fill: #E35604;
+        }
+
     </style>
 
 </head>
@@ -145,7 +149,6 @@
             svg.selectAll('bar')
                 .data(bar_data)
               .enter().append('rect')
-                .style('fill', '#E35604')
                 .attr('x', function(d){ return x(d.year); })
                 .attr('width', x.rangeBand())
                 .attr('y', function(d){ return y(d.value); })
