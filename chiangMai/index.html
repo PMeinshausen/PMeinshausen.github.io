@@ -114,24 +114,12 @@
                     create_table(d);
                 });
 
-            svg.selectAll('bar')
-                .on('mouseover', function(d){
-                    d3.select(this).style('fill', 'red');
-                    })
-                .on('mouseout', function(d){
-                    d3.select(this).style('fill', 'orange')
-                    })
-                .on('click', function(d){
-                    console.log(data);
-                    d3.select('div#table').html(d.year);
-                });
-
             function create_table(d){
 
                 //svg.selectAll('.titles').remove();
                 console.log(data);
 
-                var labels = svg.selectAll('.titles')
+                var labels = svgTable.selectAll('.titles')
                     .data(data.filter(function(el){
                         return el.date == d.year;
                     }));
