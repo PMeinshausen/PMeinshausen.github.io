@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -9,9 +10,15 @@
         $(document).ready(function(){
             $.getJSON('chiangGraph.json', function(response){
                 console.log(response);
-                book_terms = response;
+                book_terms = Object.keys(response);
             });
         });
+        $(function() {
+            var availableTags = book_terms;
+            $( "#tags" ).autocomplete({
+              source: availableTags
+            });
+          });
     </script>
 
     <style>
@@ -43,6 +50,10 @@
 
     <div id="chart"></div>
     <div class='text_scroll' id="table"></div>
+    <div class="ui-widget">
+        <label for="tags">Tags: </label>
+        <input id="tags">
+    </div>
     <div id="graph"></div>
 
     <script>
