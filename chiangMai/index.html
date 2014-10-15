@@ -155,7 +155,16 @@
 
             function create_table(d){
 
-                //svg.selectAll('.titles').remove();
+                var title = svgTable.selectAll('.title')
+                    .enter().append('text')
+                    .attr('class', 'title')
+                    .attr('x', width/2)
+                    .attr('y', 0)
+                    .text(d.year);
+
+                title
+                    .transition()
+                    .text(d.year);
 
                 var labels = svgTable.selectAll('.titles')
                     .data(data.filter(function(el){
@@ -166,7 +175,7 @@
                     .enter().append('text')
                     .attr('class', 'titles')
                     .attr('x', 20)
-                    .attr('y', function(d,i){ return i*10 })
+                    .attr('y', function(d,i){ return i*15 })
                     .text(function(e){ return e.found_title });
 
                 labels
@@ -175,7 +184,7 @@
                     }))
                     .transition()
                     .attr('x', 20)
-                    .attr('y', function(d,i){ return i*10 })
+                    .attr('y', function(d,i){ return i*15 })
                     .text(function(e){ return e.found_title });
 
                 labels.exit().remove();
