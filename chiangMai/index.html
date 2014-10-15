@@ -177,7 +177,7 @@
                     .enter().append('text')
                     .attr('class', 'titles')
                     .attr('x', 20)
-                    .attr('y', function(d,i){ return i*20 })
+                    .attr('y', function(d,i){ return (i*15)+10 })
                     .text(function(e){ return e.found_title });
 
                 labels
@@ -186,7 +186,7 @@
                     }))
                     .transition()
                     .attr('x', 20)
-                    .attr('y', function(d,i){ return i*20 })
+                    .attr('y', function(d,i){ return (i*15)+10 })
                     .text(function(e){ return e.found_title });
 
                 labels.exit().remove();
