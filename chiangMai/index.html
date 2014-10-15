@@ -178,8 +178,8 @@
                     .attr('class', 'titles')
                     .attr('x', 20)
                     .attr('y', function(d,i){ return (i*15)+10 })
-                    .html('<a href=' + e.link + '>' + e.found_title + '</a>');
-                    //.text(function(e){ return e.found_title });
+                    .text(function(e){ return e.found_title })
+                    .on('click', function(e){ return OpenInNewTab(e.link) });
 
                 labels
                     .data(data.filter(function(el){
@@ -188,11 +188,16 @@
                     .transition()
                     .attr('x', 20)
                     .attr('y', function(d,i){ return (i*15)+10 })
-                    .html('<a href=' + e.link + '>' + e.found_title + '</a>');
-                    //.text(function(e){ return e.found_title });
+                    .text(function(e){ return e.found_title })
+                    .on('click', function(e){ return OpenInNewTab(e.link) });;
 
                 labels.exit().remove();
 
+            }
+
+            function OpenInNewTab(url){
+                var win = window.open(url, '_blank');
+                win.focus();
             }
         });
 
