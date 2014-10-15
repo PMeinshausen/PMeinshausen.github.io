@@ -149,7 +149,7 @@
                 .attr('y', 6)
                 .attr('dy', '.71em')
                 .style('text-anchor', 'end')
-                .text('Value');
+                .text('Count');
 
             svg.selectAll('bar')
                 .data(bar_data)
@@ -214,22 +214,8 @@
                         return el.date == d.year;
                     }))
                     .transition()
-                    .attr('x', 20)
-                    .attr('y', function(d,i){ return (i*15)+10 })
-                    .text(function(e){ return e.found_title })
-                    .on('mouseover', function(d){
-                        d3.select(this)
-                        .style('fill', 'blue')
-                        .style('text-decoration', 'underline')
-                        .style('cursor', 'pointer')
-                    })
-                    .on('mouseout', function(d){
-                        d3.select(this)
-                        .style('fill', 'black')
-                        .style('text-decoration', 'none')
-                        .style('cursor', 'default')
-                    })
-                    .on('click', function(e){ return OpenInNewTab(e.link); });
+                    .duration(400)
+                    .text(function(e){ return e.found_title });
 
                 labels.exit().remove();
 
