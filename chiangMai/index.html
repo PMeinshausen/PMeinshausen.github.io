@@ -160,8 +160,12 @@
                 svgTable.append('text')
                     .attr('class', 'title')
                     .attr('x', width/2)
-                    .attr('y', 0)
+                    .attr('y', -10)
                     .style('font-size', '20px')
+                    .text(d.year);
+
+                svgTable.selectAll('.title')
+                    .transition()
                     .text(d.year);
 
                 var labels = svgTable.selectAll('.titles')
