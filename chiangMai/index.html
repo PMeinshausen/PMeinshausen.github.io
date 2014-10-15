@@ -55,7 +55,7 @@
           shape-rendering: crispEdges;
         }
 
-        rect {
+        .chart_bar {
             fill: #E35604;
         }
 
@@ -149,6 +149,7 @@
             svg.selectAll('bar')
                 .data(bar_data)
               .enter().append('rect')
+                .attr('class', 'chart_bar')
                 .attr('x', function(d){ return x(d.year); })
                 .attr('width', x.rangeBand())
                 .attr('y', function(d){ return y(d.value); })
