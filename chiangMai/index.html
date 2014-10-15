@@ -55,7 +55,6 @@
 
         d3.csv("chiangMai_data.csv", function(error, data){
 
-            console.log(data);
             years = {};
             for (i=0; i<data.length; i++){
                 if (!(data[i].date in years)){
@@ -117,7 +116,6 @@
             function create_table(d){
 
                 //svg.selectAll('.titles').remove();
-                console.log(data);
 
                 var labels = svgTable.selectAll('.titles')
                     .data(data.filter(function(el){
