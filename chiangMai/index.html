@@ -178,7 +178,7 @@
                     .attr('class', 'titles')
                     .attr('x', 20)
                     .attr('y', function(d,i){ return (i*15)+10 })
-                    .html(function(e){ return '<a href=' + e.link + '>' + e.found_title + '</a>'});
+                    .html('<a href=' + e.link + '>' + e.found_title + '</a>');
                     //.text(function(e){ return e.found_title });
 
                 labels
@@ -188,7 +188,7 @@
                     .transition()
                     .attr('x', 20)
                     .attr('y', function(d,i){ return (i*15)+10 })
-                    .html(function(e){ return '<a href=' + e.link + '>' + e.found_title + '</a>'});
+                    .html('<a href=' + e.link + '>' + e.found_title + '</a>');
                     //.text(function(e){ return e.found_title });
 
                 labels.exit().remove();
