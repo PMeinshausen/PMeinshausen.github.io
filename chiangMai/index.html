@@ -48,6 +48,10 @@
             max-height:200px;
             overflow-y:scroll;
         }
+        .domain {
+            stroke-width: 1.5px;
+            color: #D80913;
+        }
     </style>
 
 </head>
@@ -138,16 +142,16 @@
             svg.selectAll('bar')
                 .data(bar_data)
               .enter().append('rect')
-                .style('fill', 'orange')
+                .style('fill', '#E35604')
                 .attr('x', function(d){ return x(d.year); })
                 .attr('width', x.rangeBand())
                 .attr('y', function(d){ return y(d.value); })
                 .attr('height', function(d){ return height - y(d.value); })
                 .on('mouseover', function(d){
-                    d3.select(this).style('fill', 'red');
+                    d3.select(this).style('fill', '#D80913');
                     })
                 .on('mouseout', function(d){
-                    d3.select(this).style('fill', 'orange')
+                    d3.select(this).style('fill', '#E35604')
                     })
                 .on('click', function(d){
                     create_table(d);
