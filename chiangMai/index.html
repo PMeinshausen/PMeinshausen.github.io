@@ -21,6 +21,10 @@
               source: availableTags
             });
           });
+
+        function submit(d){
+            console.log(d);
+        };
     </script>
 
     <style>
@@ -55,7 +59,7 @@
     <div class="ui-widget">
         <label for="tags">Tags: </label>
         <input id="tags">
-            <button type= "submit" id= "SUBMIT" onclick="#" value="SUBMIT">  BUTTON</button>
+            <button type= "submit" id= "SUBMIT" onclick="submit($('#tags').val())" value="SUBMIT">  SUBMIT</button>
     </div>
     <div id="graph"></div>
 
