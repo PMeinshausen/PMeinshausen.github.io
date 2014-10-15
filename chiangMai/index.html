@@ -184,7 +184,7 @@
         });
 
         /*******************************GRAPH*********************************/
-        var graph_width = 400,
+        var graph_width = 800,
             graph_height = 400;
 
         var force = d3.layout.force()
@@ -192,11 +192,15 @@
             .linkDistance(120)
             .size([graph_width, graph_height]);
 
+
+        function update(d){
+
+        d3.select('div#graph').selectAll('svg').remove();
+
         var graph_svg = d3.select('div#graph').append('svg')
             .attr('width', graph_width)
             .attr('height', graph_height);
 
-        function update(d){
         d3.json('chiangGraph.json', function(error, json){
             
                 jsonfile = {};
