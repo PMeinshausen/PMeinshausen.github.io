@@ -205,10 +205,12 @@
 
             var node = graph_svg.selectAll('.node')
                 .data(jsonfile.nodes)
-              .enter().append('circle')
+              .enter().append('g')
                 .attr('class', 'node')
-                .attr('r', 5)
                 .call(force.drag);
+
+            node.append('circle')
+                .attr('r', 7);
 
             node.append('title')
                 .text(function(d){ return d.name; });
