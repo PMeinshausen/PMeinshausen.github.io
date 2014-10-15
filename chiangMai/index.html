@@ -157,6 +157,27 @@
 
         d3.json('chiangGraph.json', function(error, json){
             console.log(json);
+
+            jsonfile = {};
+            nodes = [];
+            links = [];
+            tempdict = {};
+            tempdict['name'] = 'today';
+            nodes.push(tempdict);
+            for (i=0; i<json['today'].length; i++){
+                dict = {};
+                dict['name'] = json['today'][i].name
+                nodes.push(dict);
+            }
+            for (i=0; i<json['today'].length; i++){
+                dict = {};
+                dict['source'] = 0;
+                dict['target'] = json['today'][i].size
+                links.push(dict);
+            }
+            jsonfile['nodes'] = nodes;
+            jsonfile['links'] = links;
+            console.log(jsonfile);
         });
 
     </script>
