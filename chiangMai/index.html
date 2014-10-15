@@ -204,7 +204,7 @@
                 .style('stroke-width', function(d){ return d.size; });
 
             var node = graph_svg.selectAll('.node')
-                .data(jsonfile.nodes)
+                .data(force.nodes())
               .enter().append('g')
                 .attr('class', 'node')
                 .call(force.drag);
