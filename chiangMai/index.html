@@ -155,7 +155,9 @@
 
             function create_table(d){
 
-                var title = svgTable.selectAll('.title')
+                console.log(d.year);
+
+                var title = svgTable.select('.title')
                     .append('text')
                     .attr('class', 'title')
                     .attr('x', width/2)
