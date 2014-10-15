@@ -10,7 +10,6 @@
             font: 10px sans-serif;
         }
         .node {
-          stroke: #fff;
           stroke-width: 1.5px;
         }
 
@@ -200,7 +199,7 @@
                 .data(jsonfile.links)
               .enter().append('line')
                 .attr('class', 'link')
-                .style('stroke-width', function(d){ return d.size; });
+                .style('stroke-width', function(d){ return d.size*3; });
 
             var node = graph_svg.selectAll('.node')
                 .data(jsonfile.nodes)
