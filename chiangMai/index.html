@@ -158,7 +158,7 @@
 
         var force = d3.layout.force()
             .charge(-120)
-            .linkDistance(30)
+            .linkDistance(120)
             .size([graph_width, graph_height]);
 
         var graph_svg = d3.select('div#graph').append('svg')
@@ -199,7 +199,7 @@
                 .data(jsonfile.links)
               .enter().append('line')
                 .attr('class', 'link')
-                .style('stroke-width', function(d){ return d.size*3; });
+                .style('stroke-width', function(d){ return d.size; });
 
             var node = graph_svg.selectAll('.node')
                 .data(jsonfile.nodes)
