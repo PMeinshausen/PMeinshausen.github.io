@@ -112,7 +112,6 @@
 
 
         d3.csv("chiangMai_data.csv", function(error, data){
-            var main_data = data;
 
             years = {};
             for (i=0; i<data.length; i++){
@@ -247,7 +246,7 @@
           .append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-        var termsTable = d3.select('div#table').append('svg')
+        var termsTable = d3.select('div#termstable').append('svg')
             .attr('width', width + margin.left + margin.right)
             .attr('height', height + margin.top + margin.bottom)
           .append('g')
@@ -296,40 +295,42 @@
                     })
                 .on('mouseout', function(d){
                     d3.select(this).style('fill', '#E35604')
-                    });
+                    })
+                .on('click', function(d){
+                    create_table(d.words);
+                });
 
             function create_table(d){
 
-                svgTable.append('text')
+                d3.csv("chiangMai_data.csv", function(error, main_data){
+
+
+                termsTable.append('text')
                     .attr('class', 'title')
                     .attr('x', width/2)
                     .attr('y', 0)
                     .style('font-size', '20px')
-                    .text(d.year);
+                    .text(d);
 
-                svgTable.selectAll('.title')
+                termsTable.selectAll('.title')
                     .transition()
-                    .text(d.year);
+                    .text(d);
 
-                data.filter(function(d){
-                    for (i=0; i<data.length; i++){
-                        if (data[i].tokens.indexOf('science') > -1){
-                            console.log(data[i].found_title);
+                var termLabels = termsTable.selectAll('.titles')
+                    .data(main_data.filter(function(e){
+                        for (i=0; i<main_data.length; i++){
+                            if (main_data[i].tokens.indexOf(d) > -1){
+                                return e.found_title;
+                            }
                         }
-                    }
-                })
-
-                var labels = svgTable.selectAll('.titles')
-                    .data(data.filter(function(el){
-                        return el.date == d.year;
                     }));
 
-                labels
+                termLabels
                     .enter().append('text')
                     .attr('class', 'titles')
                     .attr('x', 20)
                     .attr('y', function(d,i){ return (i*15)+10 })
-                    .text(function(e){ return e.found_title })
+                    .text(function(e){ return e })
                     .on('mouseover', function(d){
                         d3.select(this)
                         .style('fill', 'blue')
@@ -341,23 +342,26 @@
                         .style('fill', 'black')
                         .style('text-decoration', 'none')
                         .style('cursor', 'default')
-                    })
-                    .on('click', function(e){ return OpenInNewTab(e.link) });
+                    });
 
-                labels
-                    .data(data.filter(function(el){
-                        return el.date == d.year;
+                termLabels
+                    .data(main_data.filter(function(e){
+                        for (i=0; i<main_data.length; i++){
+                            if (main_data[i].tokens.indexOf(d) > -1){
+                                return e.found_title;
+                            }
+                        }
                     }))
                     .transition()
                     .duration(400)
-                    .text(function(e){ return e.found_title });
+                    .text(function(e){ return e });
 
-                labels.exit().remove();
+                termLabels.exit().remove();
 
-            }
+            })
 
-            
-            });
+        }
+        });
             
         /*******************************GRAPH*********************************/
         var graph_width = 800,
