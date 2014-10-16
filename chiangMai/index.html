@@ -78,6 +78,7 @@
             <button type= "submit" id= "SUBMIT" onclick="update($('#tags').val())" value="SUBMIT">  SUBMIT</button>
     </div>
     <div id="top_terms"></div>
+    <div class='text_scroll' id="termstable"></div>
     <div id="graph"></div>
 
     <script>
@@ -111,13 +112,7 @@
 
 
         d3.csv("chiangMai_data.csv", function(error, data){
-            data.filter(function(d){
-                for (i=0; i<data.length; i++){
-                    if (data[i].tokens.indexOf('science') > -1){
-                        console.log(data[i].found_title);
-                    }
-                }
-            })
+            var main_data = data;
 
             years = {};
             for (i=0; i<data.length; i++){
@@ -252,6 +247,12 @@
           .append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
+        var termsTable = d3.select('div#table').append('svg')
+            .attr('width', width + margin.left + margin.right)
+            .attr('height', height + margin.top + margin.bottom)
+          .append('g')
+            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
         d3.csv("top_words.csv", function(error, data){
             data.forEach(function(d){
                 d.count = +d.count;
@@ -296,6 +297,64 @@
                 .on('mouseout', function(d){
                     d3.select(this).style('fill', '#E35604')
                     });
+
+            function create_table(d){
+
+                svgTable.append('text')
+                    .attr('class', 'title')
+                    .attr('x', width/2)
+                    .attr('y', 0)
+                    .style('font-size', '20px')
+                    .text(d.year);
+
+                svgTable.selectAll('.title')
+                    .transition()
+                    .text(d.year);
+
+                data.filter(function(d){
+                    for (i=0; i<data.length; i++){
+                        if (data[i].tokens.indexOf('science') > -1){
+                            console.log(data[i].found_title);
+                        }
+                    }
+                })
+
+                var labels = svgTable.selectAll('.titles')
+                    .data(data.filter(function(el){
+                        return el.date == d.year;
+                    }));
+
+                labels
+                    .enter().append('text')
+                    .attr('class', 'titles')
+                    .attr('x', 20)
+                    .attr('y', function(d,i){ return (i*15)+10 })
+                    .text(function(e){ return e.found_title })
+                    .on('mouseover', function(d){
+                        d3.select(this)
+                        .style('fill', 'blue')
+                        .style('text-decoration', 'underline')
+                        .style('cursor', 'pointer')
+                    })
+                    .on('mouseout', function(d){
+                        d3.select(this)
+                        .style('fill', 'black')
+                        .style('text-decoration', 'none')
+                        .style('cursor', 'default')
+                    })
+                    .on('click', function(e){ return OpenInNewTab(e.link) });
+
+                labels
+                    .data(data.filter(function(el){
+                        return el.date == d.year;
+                    }))
+                    .transition()
+                    .duration(400)
+                    .text(function(e){ return e.found_title });
+
+                labels.exit().remove();
+
+            }
 
             
             });
