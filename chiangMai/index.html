@@ -111,7 +111,13 @@
 
 
         d3.csv("chiangMai_data.csv", function(error, data){
-            console.log(data);
+            data.filter(function(d){
+                for (i=0; i<data.length; i++){
+                    if (data[i].tokens.indexOf('science') > -1){
+                        console.log(data[i].found_title);
+                    }
+                }
+            })
 
             years = {};
             for (i=0; i<data.length; i++){
@@ -242,7 +248,7 @@
 
         var termsSvg = d3.select('div#top_terms').append('svg')
             .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
+            .attr('height', height + margin.top + margin.bottom*2)
           .append('g')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
