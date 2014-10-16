@@ -304,7 +304,15 @@
 
                 d3.csv("chiangMai_data.csv", function(error, main_data){
 
-
+                    var this = main_data.filter(function(e){
+                        for (i=0; i<main_data.length; i++){
+                            if (main_data[i].tokens.indexOf(d) > -1){
+                                return e;
+                            }
+                        }
+                    });
+                console.log(this);
+                
                 termsTable.append('text')
                     .attr('class', 'title')
                     .attr('x', width/2)
@@ -325,14 +333,6 @@
                         }
                     }));
 
-                var this = main_data.filter(function(e){
-                        for (i=0; i<main_data.length; i++){
-                            if (main_data[i].tokens.indexOf(d) > -1){
-                                return e;
-                            }
-                        }
-                    });
-                console.log(this);
 
                 termLabels
                     .enter().append('text')
