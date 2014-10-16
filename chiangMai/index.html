@@ -334,7 +334,7 @@
                     .attr('class', 'titles')
                     .attr('x', 20)
                     .attr('y', function(d,i){ return (i*15)+10 })
-                    .text(function(e){ return e })
+                    .text(function(e){ return e.found_title })
                     .on('mouseover', function(d){
                         d3.select(this)
                         .style('fill', 'blue')
@@ -356,7 +356,7 @@
                     }))
                     .transition()
                     .duration(400)
-                    .text(function(e){ return e });
+                    .text(function(e){ return e.found_title });
 
                 termLabels.exit().remove();
 
