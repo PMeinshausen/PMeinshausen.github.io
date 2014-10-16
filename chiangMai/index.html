@@ -320,7 +320,7 @@
                 node.on('click', function(d){ 
                         if (d.name in book_terms){
                             return update(d.name);
-                        else {
+                        } else {
                             d3.select(this).style('fill', 'grey');
                         } })
                     .on('mouseover', function(d){
