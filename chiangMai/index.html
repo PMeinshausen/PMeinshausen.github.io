@@ -318,6 +318,12 @@
                     .text(function(d){ return d.name; });
 
                 node.on('click', function(d){ return update(d.name); })
+                    .on('mouseover', function(d){
+                        d3.select(this).style('cursor', 'pointer');
+                    })
+                    .on('mouseout', function(d){
+                        d3.select(this).style('cursor', 'pointer');
+                    });
 
                 force.on('tick', function(){
                     link.attr('x1', function(d){ return d.source.x; })
