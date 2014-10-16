@@ -278,7 +278,7 @@
                 .attr('class', 'chart_bar')
                 .attr('x', function(d){ return xTerms(d.words); })
                 .attr('width', xTerms.rangeBand())
-                .attr('y', function(d){ return yTermsd.count); })
+                .attr('y', function(d){ return yTerms(d.count); })
                 .attr('height', function(d){ return height - yTerms(d.count); })
                 .on('mouseover', function(d){
                     d3.select(this).style('fill', '#D80913');
