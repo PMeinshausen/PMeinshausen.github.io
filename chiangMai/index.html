@@ -247,7 +247,7 @@
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
         d3.csv("top_words.csv", function(error, data){
-            console.log(d3.max(data, function(d){ return d.count; }););
+            console.log(d3.max(data, function(d){ return d.count; }));
             
             xTerms.domain(data.map(function(d){ return d.words; }));
             yTerms.domain([0, d3.max(data, function(d){ return d.count; })]);
