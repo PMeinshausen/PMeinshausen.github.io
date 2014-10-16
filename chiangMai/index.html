@@ -247,7 +247,7 @@
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
         d3.csv("top_words.csv", function(error, data){
-            console.log(data);
+            console.log(d3.max(data, function(d){ return d.count; }););
             
             xTerms.domain(data.map(function(d){ return d.words; }));
             yTerms.domain([0, d3.max(data, function(d){ return d.count; })]);
@@ -276,10 +276,10 @@
                 .data(data)
               .enter().append('rect')
                 .attr('class', 'chart_bar')
-                .attr('x', function(d){ return x(d.words); })
-                .attr('width', x.rangeBand())
-                .attr('y', function(d){ return y(d.count); })
-                .attr('height', function(d){ return height - y(d.count); })
+                .attr('x', function(d){ return xTerms(d.words); })
+                .attr('width', xTerms.rangeBand())
+                .attr('y', function(d){ return yTermsd.count); })
+                .attr('height', function(d){ return height - yTerms(d.count); })
                 .on('mouseover', function(d){
                     d3.select(this).style('fill', '#D80913');
                     })
