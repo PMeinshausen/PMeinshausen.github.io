@@ -233,11 +233,11 @@
         var yTerms = d3.scale.linear().range([height, 0]);
 
         var xAxisTerms = d3.svg.axis()
-            .scale(x)
+            .scale(xTerms)
             .orient('bottom');
 
         var yAxisTerms = d3.svg.axis()
-            .scale(y)
+            .scale(yTerms)
             .orient('left');
 
         var termsSvg = d3.select('div#top_terms').append('svg')
