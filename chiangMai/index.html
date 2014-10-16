@@ -318,7 +318,7 @@
                     .text(function(d){ return d.name; });
 
                 node.on('click', function(d){ 
-                        if (d.name in book_terms){
+                        if (book_terms.indexOf(d.name) > -1){
                             return update(d.name);
                         } else {
                             d3.select(this).style('fill', 'grey');
