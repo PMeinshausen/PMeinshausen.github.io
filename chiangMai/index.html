@@ -325,6 +325,15 @@
                         }
                     }));
 
+                this = main_data.filter(function(e){
+                        for (i=0; i<main_data.length; i++){
+                            if (main_data[i].tokens.indexOf(d) > -1){
+                                return e.found_title;
+                            }
+                        }
+                    });
+                console.log(this);
+
                 termLabels
                     .enter().append('text')
                     .attr('class', 'titles')
