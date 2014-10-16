@@ -297,22 +297,19 @@
                     d3.select(this).style('fill', '#E35604')
                     })
                 .on('click', function(d){
-                    create_table(d.words);
+                    create_termsTable(d.words);
                 });
 
-            function create_table(d){
+            function create_termsTable(d){
 
                 d3.csv("chiangMai_data.csv", function(error, main_data){
 
-                    var this = main_data.filter(function(e){
-                        for (i=0; i<main_data.length; i++){
-                            if (main_data[i].tokens.indexOf(d) > -1){
-                                return e;
-                            }
+                console.log(main_data.filter(function(e){
+                        if (e.tokens.indexOf(d) > -1){
+                            return e.found_title;
                         }
-                    });
-                console.log(this);
-                
+                    }));
+
                 termsTable.append('text')
                     .attr('class', 'title')
                     .attr('x', width/2)
@@ -326,10 +323,8 @@
 
                 var termLabels = termsTable.selectAll('.titles')
                     .data(main_data.filter(function(e){
-                        for (i=0; i<main_data.length; i++){
-                            if (main_data[i].tokens.indexOf(d) > -1){
-                                return e.found_title;
-                            }
+                        if (e.tokens.indexOf(d) > -1){
+                            return e.found_title;
                         }
                     }));
 
@@ -355,10 +350,8 @@
 
                 termLabels
                     .data(main_data.filter(function(e){
-                        for (i=0; i<main_data.length; i++){
-                            if (main_data[i].tokens.indexOf(d) > -1){
-                                return e.found_title;
-                            }
+                        if (e.tokens.indexOf(d) > -1){
+                            return e.found_title;
                         }
                     }))
                     .transition()
