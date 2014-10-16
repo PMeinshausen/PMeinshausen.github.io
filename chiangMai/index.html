@@ -228,15 +228,15 @@
         });
 
         /*******************************Top Terms*********************************/
-        var x = d3.scale.ordinal().rangeRoundBands([0, width], .1);
+        var xTerms = d3.scale.ordinal().rangeRoundBands([0, width], .1);
 
-        var y = d3.scale.linear().range([height, 0]);
+        var yTerms = d3.scale.linear().range([height, 0]);
 
-        var xAxis = d3.svg.axis()
+        var xAxisTerms = d3.svg.axis()
             .scale(x)
             .orient('bottom');
 
-        var yAxis = d3.svg.axis()
+        var yAxisTerms = d3.svg.axis()
             .scale(y)
             .orient('left');
 
@@ -249,9 +249,9 @@
         d3.csv("top_words.csv", function(error, data){
             console.log(data);
             
-            /*
-            x.domain(bar_data.map(function(d){ return d.year; }));
-            y.domain([0, d3.max(bar_data, function(d){ return d.value; })]);
+            
+            x.domain(data.map(function(d){ return d.words; }));
+            y.domain([0, d3.max(data, function(d){ return d.count; })]);
 
             termsSvg.append('g')
                 .attr('class', 'x axis')
@@ -274,23 +274,21 @@
                 .text('Count');
 
             termsSvg.selectAll('bar')
-                .data(bar_data)
+                .data(data)
               .enter().append('rect')
                 .attr('class', 'chart_bar')
-                .attr('x', function(d){ return x(d.year); })
+                .attr('x', function(d){ return x(d.words); })
                 .attr('width', x.rangeBand())
-                .attr('y', function(d){ return y(d.value); })
-                .attr('height', function(d){ return height - y(d.value); })
+                .attr('y', function(d){ return y(d.count); })
+                .attr('height', function(d){ return height - y(d.count); })
                 .on('mouseover', function(d){
                     d3.select(this).style('fill', '#D80913');
                     })
                 .on('mouseout', function(d){
                     d3.select(this).style('fill', '#E35604')
-                    })
-                .on('click', function(d){
-                    create_table(d);
+                    });
 
-            */
+            
             });
             
         /*******************************GRAPH*********************************/
