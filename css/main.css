@@ -44,6 +44,10 @@ ul.posts li {
     list-style: none;
 }
 
+.quote {
+    font-style: italic;
+}
+
 img {
     height: 50%;
     width: 50%;
